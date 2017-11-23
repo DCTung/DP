@@ -1,10 +1,11 @@
-module RegFile(input clk, reset, input [15:0] instruc_in, input [15:0] Writedata, input RegWrite, output reg [15:0] op1, output reg [15:0] op2, output reg [3:0] opcode);
+module RegFile(input clk, reset, input [15:0] instruc_in, input [15:0] Writedata, input RegWrite, output reg R15, output reg [15:0] op1, output reg [15:0] op2, output reg [3:0] opcode);
 reg [15:0] register [15:0];
 	always@(posedge clk or negedge reset)
 		begin
 			if(reset)
 				op1 <= 16'h0000;
 				op2 <= 16'h0000;
+				R15 <= 1'b0;
 				opcode <= 4'h2;  //4'h2 is only a placeholder
 				register[1] = 16'h0F00;
 				register[2] = 16'h0050;
@@ -22,13 +23,19 @@ reg [15:0] register [15:0];
 				register[14] = 16'h0000;
 				register[15] = 16'h0000;
 				register[16] = 16'h0000;
-			else if(instruc_in[15:12] == 4'b1111) // Type A
+			else if(instruc_in[15:12] == 4'b1111) // Type A opcode
 				op1 <= register [instruc_in [11:8]];
         			op2 <= register [instruc_in [7:4]];
         			opcode <= instruct_in[15:12];
+				begin
+					if(instruct_in[3:0] != 4'b0100 | instruct_in[3:0] != 4'b0101) // Type A funct code doesnt not require R15
+						R15 <= 1'b0;	
+				else
+					R15 <= 1'b1;
+				end
 			 end
 		begin
-			if(RegWrite) // if Write is required
+			if(RegWrite) // if Write is 1
 				register[instruc_in[11:8]] <= Writedata [15:0];
 		end
  endmodule
