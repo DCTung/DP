@@ -1,4 +1,4 @@
-module RegFile(input clk, reset, input [15:0] instruc_in, output reg [15:0] op1, output reg [15:0] op2, output reg [3:0] opcode);
+module RegFile(input clk, reset, input [15:0] instruc_in, input [15:0] Writedata, input RegWrite, output reg [15:0] op1, output reg [15:0] op2, output reg [3:0] opcode);
 reg [15:0] register [15:0];
 	always@(posedge clk or negedge reset)
 		begin
@@ -23,9 +23,13 @@ reg [15:0] register [15:0];
 				register[15] = 16'h0000;
 				register[16] = 16'h0000;
 			else if(instruc_in[15:12] == 4'b1111) // Type A
-        			op1 <= register [instruc_in [11:8]];
+				op1 <= register [instruc_in [11:8]];
         			op2 <= register [instruc_in [7:4]];
         			opcode <= instruct_in[15:12];
-      		end
+			 end
+		begin
+			if(RegWrite) // if Write is required
+				register[instruc_in[11:8]] <= Writedata [15:0];
+		end
  endmodule
         
