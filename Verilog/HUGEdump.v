@@ -2,8 +2,8 @@ module PC (input clk, reset, input [7:0] addr_in, output reg [7:0] addr_out);
 always@(posedge clk or negedge reset)
 	begin
 		if(reset)
-			addr_out <= 8’h00;                 
-		else 
+			addr_out <= 8’h00;
+		else
 			addr_out <= addr_in;
 	end
 endmodule
@@ -17,11 +17,11 @@ initial
 	$monitor($time, " clk = %b, reset = %b, addr_in = %h, addr_out = %h ", clk, reset, addr_in, addr_out);
 PC t1(clk, reset,addr_in, addr_out);
 initial
-	begin 
+	begin
 		clk = 1'b0;
 		forever #10 clk = ~clk;
 	end
-initial 
+initial
 	begin
 	reset = 1;
 			 #20 reset = 0; addr_in = 8'h01;
@@ -49,7 +49,7 @@ always@(*)
 	begin
 		if(!select)                   //select = 0 then, there’s no jump & continue to the next addr
 			cur_addr = nojump;
-		else 		         //select = 1 then, there’s a jump/branch & jump to the  
+		else 		         //select = 1 then, there’s a jump/branch & jump to the
         // specified addr due to jump/branch
 			cur_addr = jump;
 	end
@@ -64,7 +64,7 @@ wire [7:0] cur_addr;
 initial $monitor("select = %b, nojump = %h, jump = %h, cur_addr = %h",select, nojump, jump,cur_addr);
 
 mux2to1 m1(select, nojump, jump,cur_addr);
-initial 
+initial
 	begin
 		select = 1'b0; nojump = 8'h0F;  jump = 8'hF0;
 	#10	select = 1'b1;
@@ -72,7 +72,7 @@ initial
 	#10	select = 1'b1;
 	#10	select = 1'b0; nojump = 8'h00;  jump = 8'hFF;
 	#10 	select = 1'b1;
-	end 
+	end
 initial
 	begin
 		#70 $finish;
@@ -96,14 +96,14 @@ input addr_in;
 output instr;
 parameter SIZE = 30;
 	reg [15:0] mem[0:SIZE-1];
-	
+
 		always@(*)
 			initial
 	begin
 	for(k=0; k<SIZE - 1; k = k+1)
 	begin
 		mem[k] = 'h00;	//init all 0000
-	
+
 		//put the instructions in here
 		mem[0] = 'hF120
 	end else
@@ -149,11 +149,11 @@ always@(posedge clk or negedge reset)
 		else
 			instruc_out <= instruc_in;
 			addr_out <= addr_in;
-			
+
 	end
 endmodule
 
--------------------------------------------------------------------------------------------------------------------------------	
+-------------------------------------------------------------------------------------------------------------------------------
 Module RegFile(input clk, input reset, input [15:0] instruc_in, output reg [15:0] op1, output reg [15:0] op2, output reg [3:0] opcode);
 
 reg[15:0] register [15:0];
@@ -178,6 +178,3 @@ Endmodule
 module adder(input[7:0] addr_in, input [3:0] constant, output [7:0] addr_out);
 	assign addr_out = addr_in + constant;
 endmodule
-
-
-
