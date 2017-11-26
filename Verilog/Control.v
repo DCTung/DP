@@ -1,15 +1,15 @@
 //i'm the control mod
 
 module control(
-  input [3:0] opCode;
-  output R15;
-  output ALUSrc;
-  output MemToReg;
-  output RegWrite;
-  output MemRead;
-  output MemWrite;
-  output Branch;
-  output [1:0] ALUOP;
+  input [3:0] opCode,
+  output R15,
+  output ALUSrc,
+  output MemToReg,
+  output RegWrite,
+  output MemRead,
+  output MemWrite,
+  output Branch,
+  output [1:0] ALUOP,
   );
 
   always@(*)
