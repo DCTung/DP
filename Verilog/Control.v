@@ -9,8 +9,8 @@ module control(
   output MemRead,
   output MemWrite,
   output Branch,
-  output [1:0] ALUOP,
-  )
+  output [1:0] ALUOP
+  );
 
   always@(*)
     case(opcode)
