@@ -1,4 +1,4 @@
-`include Control.v
+`include "Control.v";
 
 module control_fixture;
 
@@ -34,7 +34,7 @@ initial
     opcode = 4'b0001;
     #5
     opcode = 4'b0000;
-
+end
   initial begin
       #100 $finish;
       end

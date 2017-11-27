@@ -2,18 +2,19 @@
 
 module control(
   input [3:0] opCode,
-  output R15,
-  output ALUSrc,
-  output MemToReg,
-  output RegWrite,
-  output MemRead,
-  output MemWrite,
-  output Branch,
-  output [1:0] ALUOP
+  output reg R15,
+  output reg ALUSrc,
+  output reg MemToReg,
+  output reg RegWrite,
+  output reg MemRead,
+  output reg MemWrite,
+  output reg Branch,
+  output reg [1:0] ALUOP
   );
 
   always@(*)
-    case(opcode)
+  begin
+    case(opCode)
     4'b1111:  //TypeA
     begin
       R15 = 1;
@@ -90,7 +91,7 @@ module control(
       begin
         R15 = 0;
         ALUSrc = 1;
-        MemToReg = X;
+        MemToReg = 0;
         RegWrite = 1;
         MemRead = 0;
         MemWrite = 1;
@@ -103,7 +104,7 @@ module control(
       begin
         R15 = 1;
         ALUSrc = 1;
-        MemToReg = x;
+        MemToReg = 0;
         RegWrite = 1;
         MemRead = 0;
         MemWrite = 0;
@@ -115,7 +116,7 @@ module control(
       begin
         R15 = 1;
         ALUSrc = 1;
-        MemToReg = x;
+        MemToReg = 0;
         RegWrite = 1;
         MemRead = 0;
         MemWrite = 0;
@@ -127,7 +128,7 @@ module control(
       begin
         R15 = 1;
         ALUSrc = 1;
-        MemToReg = x;
+        MemToReg = 0;
         RegWrite = 1;
         MemRead = 0;
         MemWrite = 0;
@@ -160,5 +161,5 @@ module control(
         ALUOP = 2'b00;
       end
 endcase
-
+end
 endmodule
