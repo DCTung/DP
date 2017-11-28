@@ -52,7 +52,7 @@ wire    R15_out,
               forever #10 clk = ~clk;
        end
 
-       // Finish the simulation at time 200
+       // Finish the  simulation at time 200
        initial
        begin
               #400 $finish;
