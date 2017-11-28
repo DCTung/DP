@@ -1,4 +1,11 @@
-module RegFile(input clk, reset, input [15:0] instruc_in, input [15:0] Writedata, input RegWrite, output reg [15:0] op1, output reg [15:0] op2, output reg [3:0] opcode);
+module RegFile(
+	       input clk, reset, 
+	       input [15:0] instruc_in, Writedata, 
+	       input RegWrite, 
+		
+	       output reg [15:0] op1, 
+	       output reg [15:0] op2, 
+	       output reg [3:0] opcode);
 reg [15:0] register [15:0];
 	always@(posedge clk or negedge reset)
 		begin
