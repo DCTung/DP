@@ -38,13 +38,13 @@ wire    R15_out,
 
        // Stimulate the Clear Signal
        initial
-       begin
+  /*     begin
               rst = 1'b1;
               #34 rst = 1'b0;
               #200 rst = 1'b1;
               #50 rst = 1'b0;
        end
-
+*/
        // Setup the clk to toggle every 10 time units
        initial
        begin
@@ -59,7 +59,7 @@ wire    R15_out,
        end
 
        initial begin
-       #10
+       #20
        IDEX_FLUSH = 0;
        RD1 = 3;
        RD2 = 7;
@@ -78,7 +78,7 @@ wire    R15_out,
          Branch_in = 0;
          ALUOP_in = 2'b11;
 
-         #10
+         #20
          IDEX_FLUSH = 1;
          RD1 = 3;
          RD2 = 7;
@@ -97,7 +97,7 @@ wire    R15_out,
            Branch_in = 0;
            ALUOP_in = 2'b11;
 
-           #10
+           #20
            IDEX_FLUSH = 0;
            RD1 = 3;
            RD2 = 7;
@@ -116,7 +116,7 @@ wire    R15_out,
              Branch_in = 0;
              ALUOP_in = 2'b11;
 
-             #10
+             #20
              IDEX_FLUSH = 1;
              RD1 = 3;
              RD2 = 7;
@@ -136,6 +136,6 @@ wire    R15_out,
 
          end
   initial begin
-    #50 $finish;
+    #300 $finish;
     end
   endmodule
