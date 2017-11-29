@@ -33,7 +33,6 @@ initial
    		    functCode = 4'b0100;
                     op1 = 16'h0001;
                     op2 = 16'h0001;
-		#20 rst = 1; 
 	end
 initial
 	begin
