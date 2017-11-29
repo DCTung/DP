@@ -10,7 +10,7 @@ module IDEXBuffer(
   input [15:0] IFID_RS, IFID_RT,
 
   //Cunit ins
-  input R15_in, ALUSrc_in,MemToReg_in, RegWrite_in, MemRead_in, MemWrite_in, Branch_in,
+  input R15_in, ALUSrc_in, MemToReg_in, RegWrite_in, MemRead_in, MemWrite_in, Branch_in,
   input [1:0] ALUOP_in,
 
   //Cunit Outs

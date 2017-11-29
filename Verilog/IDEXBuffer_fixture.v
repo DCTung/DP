@@ -9,7 +9,7 @@ reg [3:0] funct_code_in;
 
 reg R15_in, ALUSrc_in,MemToReg_in, RegWrite_in, MemRead_in, MemWrite_in, Branch_in;
 
-wire    R15_out,
+wire R15_out,
    ALUSrc_out,
    MemToReg_out,
    RegWrite_out,
@@ -18,10 +18,9 @@ wire    R15_out,
    Branch_out, ALUOP_out, RD1_out, RD2_out, signExtendedR2_out, funct_code_out;
 
    initial
-   $monitor($time, "Input: \n IDEX_FLUSH: %b R15: %h RD1: %h RD2: %h SignExtended: %h IFID_RS: %h IFID_RT: %h ALUOP_In: %h Funct Code In: %h \n   Control Input: R15_in: %b ALUSrc_in %b MemToReg_in %b RegWrite_in %b MemRead_in %b MemWrite_in %b Branch_in %b \n Output: R15_out: %b ALUSrc_out %b MemToReg_out %b RegWrite_out %b MemRead_out %b MemWrite_out %b Branch_out %b ALUOP_out %b RD1_out %b RD2_out %b signExtendedR2_out %b funct_code_out %b",
+   $monitor($time, "Input: \n IDEX_FLUSH: %1b R15: %1b RD1: %h RD2: %h SignExtended: %h IFID_RS: %h IFID_RT: %h ALUOP_In: %h Funct Code In: %h \n   Control Input: R15_in: %b ALUSrc_in %b MemToReg_in %b RegWrite_in %b MemRead_in %b MemWrite_in %b Branch_in %b \n Output: R15_out: %b ALUSrc_out %b MemToReg_out %b RegWrite_out %b MemRead_out %b MemWrite_out %b Branch_out %b ALUOP_out %b RD1_out %b RD2_out %b signExtendedR2_out %b funct_code_out %b",
    IDEX_FLUSH, R15_in, RD1, RD2, signExtendedR2, IFID_RS, IFID_RT, ALUOP_in, funct_code_in, R15_in, ALUSrc_in,MemToReg_in, RegWrite_in, MemRead_in, MemWrite_in, Branch_in,
-   R15_out,
-      ALUSrc_out,
+   R15_out, ALUSrc_out,
       MemToReg_out,
       RegWrite_out,
       MemRead_out,
@@ -37,8 +36,8 @@ wire    R15_out,
        Branch_out, ALUOP_out, RD1_out, RD2_out, signExtendedR2_out, funct_code_out);
 
        // Stimulate the Clear Signal
-       initial
-  /*     begin
+  /*        initial
+    begin
               rst = 1'b1;
               #34 rst = 1'b0;
               #200 rst = 1'b1;
