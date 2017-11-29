@@ -29,13 +29,14 @@ always@(posedge clk or negedge reset)
 	end
 	else if(MemRead && MemWrite)
 	begin
-		data_out <= m[addr_in], m[addr_in + 1]; //MemRead
+		data_out[15:8] <= m[addr_in];		//MemRead
+		data_out[7:0] <= m[addr_in + 1]; 
 		m[addr_in] <=  data_in[15:8];		//MemWrite
 		m[addr_in + 1] <= data_in[7:0]; 	
 	end
 	else if(MemRead && !MemWrite)
 	begin
-		data_out[15:8] <= m[addr_in]		//MemRead
+		data_out[15:8] <= m[addr_in];		//MemRead
 		data_out[7:0] <= m[addr_in + 1]; 
 	end	
 	else if(!MemRead && MemWrite)
