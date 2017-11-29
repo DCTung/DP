@@ -21,7 +21,7 @@ always@(posedge clk or negedge reset)
 		m[8'h06] <= 8'hDE; //m[06 - 07] = DEAD
 		m[8'h07] <= 8'hAD;
 
-		m[8'h08] <= 8'hEF; //m[08 - 09] = BEEF;
+		m[8'h08] <= 8'hBE; //m[08 - 09] = BEEF;
 		m[8'h09] <= 8'hEF;
 
 		for(i = 8'h10; i < 255; i = i + 1)
@@ -29,8 +29,8 @@ always@(posedge clk or negedge reset)
 	end
 	else if(MemRead && MemWrite)
 	begin
-		data_out[15:8] <= m[addr_in];		//MemRead
-		data_out[7:0] <= m[addr_in + 1]; 
+		data_out[15:8] <= m[addr_in];
+		data_out[7:0] <= m[addr_in + 1]; //MemRead
 		m[addr_in] <=  data_in[15:8];		//MemWrite
 		m[addr_in + 1] <= data_in[7:0]; 	
 	end
