@@ -24,6 +24,6 @@ always@(*)
 			endcase
 		end
 		else
-			operation = 4'b0110;                 //do nothing
+			operation = 4'b1111;                 //do nothing
 	end
 endmodule
