@@ -3,7 +3,7 @@ module mem(
 	   input [7:0] addr_in,
 	   input [15:0] data_in,
 	   output reg [15:0] data_out);
-reg [7:0] m [255:0];
+reg [7:0] m [254:0];
 integer i;
 always@(posedge clk or negedge reset)
 	if(reset)
@@ -24,7 +24,7 @@ always@(posedge clk or negedge reset)
 		m[8'h08] <= 8'hBE; //m[08 - 09] = BEEF;
 		m[8'h09] <= 8'hEF;
 
-		for(i = 8'h10; i < 255; i = i + 1)
+		for(i = 8'h10; i < 254; i = i + 1)
 			m[i] <= 16'h0000;
 	end
 	else if(MemRead && MemWrite)
