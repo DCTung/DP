@@ -4,8 +4,7 @@ module RegFile(
 	       input RegWrite, 
 		
 	       output reg [15:0] op1, 
-	       output reg [15:0] op2, 
-	       output reg [3:0] opcode);
+	       output reg [15:0] op2);
 reg [15:0] register [15:0];
 	always@(posedge clk or negedge reset)
 		begin
@@ -13,7 +12,6 @@ reg [15:0] register [15:0];
 			begin
 				op2 <= 16'h0000;
 				op1 <= 16'h0000;
-				opcode <= 4'h2;  //4'h2 is only a placeholder
 				register[1] <= 16'h0F00;
 				register[2] <= 16'h0050;
 				register[3] <= 16'hFF0F;
@@ -34,7 +32,6 @@ reg [15:0] register [15:0];
 			else if(instruc_in[15:12] == 4'b1111) // Type A opcode
 			begin	op1 <= register [instruc_in [11:8]];
         			op2 <= register [instruc_in [7:4]];
-        			opcode <= instruc_in[15:12];
 			end
 			//begin
 				//	if(instruct_in[3:0] != 4'b0100 | instruct_in[3:0] != 4'b0101) // Type A funct code doesnt not require R15
