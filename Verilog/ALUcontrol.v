@@ -1,26 +1,29 @@
 module ALUcontrol(
 		input [3:0] funct,
 		input [1:0] ALUop,
-		output reg [2:0] operation );
+		output reg [3:0] operation );
 always@(*)
-	begin
-		if(ALUop == 2'b11)
 		begin
-			case(funct)
-				4'b0000:
-					operation = 3'b000;  //add 
-				4'b0010:
-					operation = 3'b001;  //sub 
-				4'b0100:
-					operation = 3'b010;  //mult
-				4'b0101:
-					operation = 3'b011;  //division 
-				4'b0111:
-					operation = 3'b100;  //move
-				4'b1000:
-					operation = 3'b101;  // swap
-			default:
-				operation = 3'b111;          //do nothing
+			case(ALUop)
+				2'b11:
+					case(funct)
+					4'b0000:
+						operation = 4'b0001;  //add 
+					4'b0010:
+						operation = 4'b0010;  //sub 
+					4'b0100:
+						operation = 4'b0011;  //mult
+					4'b0101:
+						operation = 4'b0100;  //division 
+					4'b0111:
+						operation = 4'b0101;  //move
+					4'b1000:
+						operation = 4'b0110;  // swap
+					default:
+						operation = 4'b1111;  //do nothing
+				2'b10:
+					operation = 4'b0111;		
+				
 			endcase
 		end
 		else
