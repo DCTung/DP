@@ -1,17 +1,12 @@
 Chronologic VCS simulator copyright 1991-2014
 Contains Synopsys proprietary information.
-Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Nov 29 10:12 2017
-                   0 clk = 0, reset = 1, instruc_in = xxxx, addr_in = xx, instruc_out = xxxx, opcode = xxxx, addr_out = xx
-                  10 clk = 1, reset = 1, instruc_in = xxxx, addr_in = xx, instruc_out = 0000, opcode = 0000, addr_out = 00
-                  20 clk = 0, reset = 0, instruc_in = f120, addr_in = 01, instruc_out = f120, opcode = 1111, addr_out = 01
-                  30 clk = 1, reset = 0, instruc_in = f120, addr_in = 01, instruc_out = f120, opcode = 1111, addr_out = 01
-                  40 clk = 0, reset = 1, instruc_in = f120, addr_in = 01, instruc_out = f120, opcode = 1111, addr_out = 01
-                  50 clk = 1, reset = 1, instruc_in = f120, addr_in = 01, instruc_out = 0000, opcode = 0000, addr_out = 00
-                  60 clk = 0, reset = 1, instruc_in = f120, addr_in = 01, instruc_out = 0000, opcode = 0000, addr_out = 00
-                  70 clk = 1, reset = 1, instruc_in = f120, addr_in = 01, instruc_out = 0000, opcode = 0000, addr_out = 00
-$finish called from file "IFID_buffer_fixture.v", line 31.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Nov 29 13:20 2017
+                   0  instruc_in = xxxx, addr_in = xx, instruc_out = xxxx, opcode = xxxx, addr_out = xx
+                  20  instruc_in = f120, addr_in = 01, instruc_out = f120, opcode = 1111, addr_out = 01
+                  40  instruc_in = dddd, addr_in = 04, instruc_out = dddd, opcode = 1101, addr_out = 04
+$finish called from file "IFID_buffer_fixture.v", line 22.
 $finish at simulation time                   80
            V C S   S i m u l a t i o n   R e p o r t 
 Time: 80
 CPU Time:      0.340 seconds;       Data structure size:   0.0Mb
-Wed Nov 29 10:12:20 2017
+Wed Nov 29 13:20:14 2017
