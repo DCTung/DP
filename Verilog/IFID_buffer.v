@@ -1,4 +1,9 @@
-module IFID_buffer(input clk, input reset,  input [15:0] instruc_in, input [7:0] addr_in, output reg [15:0] instruc_out, output reg [7:0] addr_out);
+module IFID_buffer(
+input clk,reset,  
+input [15:0] instruc_in, 
+input [7:0] addr_in, 
+output reg [15:0] instruc_out, 
+output reg [7:0] addr_out);
 
 always@(posedge clk or negedge reset)
 	begin
