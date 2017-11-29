@@ -3,27 +3,41 @@ module mem(
 	   input [7:0] addr_in,
 	   input [15:0] data_in,
 	   output reg [15:0] data_out);
-parameter size = 98;
-reg [15:0] m [size:0];
-
+reg [7:0] m [255:0];
+integer i;
 always@(posedge clk or negedge reset)
 	if(reset)
 	begin
-		data_out <= 16'b0;
-		m[8'h00] <= 16'h2BCD;
-		m[8'h02] <= 16'h0000;
-		m[8'h04] <= 16'h1234;
-		m[8'h06] <= 16'hDEAD;
-		m[8'h08] <= 16'hBEEF;
-		for(i = 8'h10; i < size; i = i + 1)
+		data_out <= 16'h0000;
+		m[8'h00] <= 8'h2B; //m[00 - 01] = 2BCD
+		m[8'h01] <= 8'hCD;
+
+		m[8'h02] <= 8'h00; //m[02 - 03] = 0000
+		m[8'h03] <= 8'h00;
+
+		m[8'h04] <= 8'h12; //m[04 - 05] = 1234
+		m[8'h05] <= 8'h34;
+
+		m[8'h06] <= 8'hDE; //m[06 - 07] = DEAD
+		m[8'h07] <= 8'hAD;
+
+		m[8'h08] <= 8'hEF; //m[08 - 09] = BEEF;
+		m[8'h09] <= 8'hEF;
+
+		for(i = 8'h10; i < 255; i = i + 1)
 			m[i] <= 16'h0000;
 	end
 	else if(MemRead && MemWrite)
-		data_out <= m[addr_in];
-		m[addr_in] <=  
-	else if(MemWrite)
-		m[addr_in] <= data_in;
+	begin
+		data_out <= m[addr_in]; //MemRead
+		m[addr_in] <=  data_in; //MemWrite
 	end
+	else if(MemRead && !MemWrite)
+		data_out <= m[addr_in]; //MemRead
+	else if(!MemRead && MemWrite)
+		m[addr_in] <= data_in;  //MemWrite 
 endmodule
 		
+		
+
 		
