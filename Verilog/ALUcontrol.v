@@ -25,13 +25,13 @@ always@(*)
 					endcase
 				end
 				2'b10:
-					operation = 4'b0111;	      //OR/AND
+					operation = 4'b0111;	      //OR & AND operation
 				2'b11:
-					operation = 4'b0001;
+					operation = 4'b0001;	      //load & store (add)
 				2'b01:
-					operation = 4'b1001;
+					operation = 4'b1001;          //branch (comparison)
 				2'b00:
-					operation = 4'b000;
+					operation = 4'b0000;           //jump/halt
 			endcase
 		end
 endmodule
