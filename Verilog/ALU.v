@@ -7,7 +7,7 @@ module ALU(
   output reg o
   //need other condits
   );
-  reg [31:0]temp = 0;
+  reg signed [31:0] temp;
   always@(posedge clk, negedge rst)
   begin
   if(!rst)
@@ -17,21 +17,28 @@ module ALU(
     temp <= 0;
     o <= 0;
     end
-    else
+    else if(rst)
+    begin
     case(functCode)
       4'b0000: //addies
+      begin
         temp = op1 + op2;
         result <= temp[15:0];
-        //need overflow detection for each @@@@
+      end  //need overflow detection for each @@@@
+
       4'b0001: //subbies
+      begin
         temp = op1 - op2;
         result <= temp[15:0];
+      end
+
       4'b0100: //multiplic
       begin
         temp = op1 * op2;
         remainder = op1%op2;
-        result <= temp[15:0];
+        result = temp[15:0];
       end
+
       4'b0101: //divvies
       begin
         result = op1/op2;
@@ -44,5 +51,6 @@ module ALU(
         result = op1;
         //op2 straight to buff?
       endcase
+    end
     end
   endmodule
