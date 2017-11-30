@@ -1,7 +1,7 @@
 `include "IDEXBuffer.v";
 
 module IDEXBuffer_fixture;
-reg clk, rst, IDEX_FLUSH;
+reg IDEX_FLUSH;
 reg [15:0] RD1, RD2, signExtendedR2;
 reg [15:0] IFID_RS, IFID_RT;
 reg [1:0] ALUOP_in;
@@ -27,29 +27,13 @@ wire R15_out,
       MemWrite_out,
       Branch_out, ALUOP_out, RD1_out, RD2_out, signExtendedR2_out, funct_code_out);
 
-    IDEXBuffer I1(clk, rst, IDEX_FLUSH, RD1, RD2, signExtendedR2, funct_code_in, IFID_RS, IFID_RT, R15_in, ALUSrc_in, RegWrite_in, MemRead_in, Branch_in, ALUOP_in,R15_out,
+    IDEXBuffer I1(IDEX_FLUSH, RD1, RD2, signExtendedR2, funct_code_in, IFID_RS, IFID_RT, R15_in, ALUSrc_in, RegWrite_in, MemRead_in, Branch_in, ALUOP_in,R15_out,
        ALUSrc_out,
        MemToReg_out,
        RegWrite_out,
        MemRead_out,
        MemWrite_out,
        Branch_out, ALUOP_out, RD1_out, RD2_out, signExtendedR2_out, funct_code_out);
-
-       // Stimulate the Clear Signal
-  /*        initial
-    begin
-              rst = 1'b1;
-              #34 rst = 1'b0;
-              #200 rst = 1'b1;
-              #50 rst = 1'b0;
-       end
-*/
-       // Setup the clk to toggle every 10 time units
-       initial
-       begin
-              clk = 1'b0;
-              forever #10 clk = ~clk;
-       end
 
        // Finish the  simulation at time 200
        initial
@@ -58,7 +42,7 @@ wire R15_out,
        end
 
        initial begin
-       #20
+       #50
        IDEX_FLUSH = 0;
        RD1 = 3;
        RD2 = 7;
@@ -77,7 +61,7 @@ wire R15_out,
          Branch_in = 0;
          ALUOP_in = 2'b11;
 
-         #20
+         #50
          IDEX_FLUSH = 1;
          RD1 = 3;
          RD2 = 7;
@@ -96,7 +80,7 @@ wire R15_out,
            Branch_in = 0;
            ALUOP_in = 2'b11;
 
-           #20
+           #50
            IDEX_FLUSH = 0;
            RD1 = 3;
            RD2 = 7;
@@ -115,7 +99,7 @@ wire R15_out,
              Branch_in = 0;
              ALUOP_in = 2'b11;
 
-             #20
+             #50
              IDEX_FLUSH = 1;
              RD1 = 3;
              RD2 = 7;
@@ -135,6 +119,6 @@ wire R15_out,
 
          end
   initial begin
-    #300 $finish;
+    #1000 $finish;
     end
   endmodule
