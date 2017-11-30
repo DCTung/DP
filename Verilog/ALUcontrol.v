@@ -9,13 +9,13 @@ always@(*)
 				begin
 					case(funct)
 					4'b0000:
-						operation = 4'b0001;  //add 
+						operation = 4'b0001;  //add
 					4'b0010:
-						operation = 4'b0010;  //sub 
+						operation = 4'b0010;  //sub
 					4'b0100:
 						operation = 4'b0011;  //mult
 					4'b0101:
-						operation = 4'b0100;  //division 
+						operation = 4'b0100;  //division
 					4'b0111:
 						operation = 4'b0101;  //move
 					4'b1000:
