@@ -16,10 +16,6 @@ wire R15_out, ALUSrc_out, MemToReg_out, RegWrite_out, MemRead_out, MemWrite_out,
     IDEXBuffer I1(IDEX_FLUSH, RD1, RD2, signExtendedR2, funct_code_in, IFID_RS, IFID_RT, R15_in, ALUSrc_in, MemToReg_in, RegWrite_in, MemRead_in, Branch_in, ALUOP_in,R15_out, ALUSrc_out, MemToReg_out, RegWrite_out, MemRead_out, MemWrite_out, Branch_out, ALUOP_out, RD1_out, RD2_out, signExtendedR2_out, funct_code_out, IFID_RS_OUT, IFID_RT_OUT);
 
        // Finish the  simulation at time 200
-       initial
-       begin
-              #400 $finish;
-       end
 
        initial begin
        #50
