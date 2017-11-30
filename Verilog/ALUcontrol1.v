@@ -1,11 +1,12 @@
-module ALUcontrol(
+module ALUcontrol1(
 		input [3:0] funct,
 		input [1:0] ALUop,
 		output reg [3:0] operation );
 always@(*)
 		begin
-			if(ALUop == 2'b11)
-			begin
+			case(ALUop)
+				2'b11:
+				begin
 					case(funct)
 					4'b0000:
 						operation = 4'b0001;  //add
@@ -23,13 +24,15 @@ always@(*)
 						operation = 4'b0001;  //will never occur
 					endcase
 				end
-				else if(ALUop == 2'b10)
+
+				2'b10:
 					operation = 4'b0111;	      //OR & AND operation
-				else if(ALUop == 2'b11)
+				2'b11:
 					operation = 4'b0001;	      //load & store (add)
-				else if(ALUop == 2'b01)
+				2'b01:
 					operation = 4'b1001;          //branch (comparison)
-				else if(ALUop == 2'b00)
+				2'b00:
 					operation = 4'b0000;           //jump/halt
-			end
+			endcase
+		end
 endmodule

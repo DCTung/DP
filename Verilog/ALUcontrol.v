@@ -6,7 +6,6 @@ always@(*)
 		begin
 			case(ALUop)
 				2'b11:
-				begin
 					case(funct)
 					4'b0000:
 						operation = 4'b0001;  //add
