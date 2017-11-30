@@ -14,7 +14,7 @@ module EXMBuffer(
   //op for MOV like how we saw in class
   //forwarding caught in this tage?
 
-  //WB Signals??? -- RegWrite sig? 
+  //WB Signals??? -- RegWrite sig?
 
   always@(*)
 
