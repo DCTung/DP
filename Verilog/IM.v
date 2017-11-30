@@ -1,6 +1,8 @@
-module IM (input [7:0] addr_in, output reg [7:0] addr_out, output reg [15:0] instr);
-
-	reg [15:0] mem[0:254];
+module IM (
+	input [7:0] addr_in, 
+	output reg [7:0] addr_out, 
+	output reg [15:0] instr);
+	reg [15:0] mem[254:0];
 	always@(*)
 		begin
 	         mem[8'h00] = 16'hF120;

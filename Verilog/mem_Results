@@ -1,0 +1,18 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Nov 29 12:51 2017
+                   0 reset = 1, MemWrite = x, MemRead = x, addr_in = xx, data_in = xxxx, data_out = xxxx
+                  10 reset = 1, MemWrite = x, MemRead = x, addr_in = xx, data_in = xxxx, data_out = 0000
+                  20 reset = 0, MemWrite = 1, MemRead = 0, addr_in = 10, data_in = 8888, data_out = 0000
+                  40 reset = 0, MemWrite = 0, MemRead = 1, addr_in = 06, data_in = 1111, data_out = 0000
+                  50 reset = 0, MemWrite = 0, MemRead = 1, addr_in = 06, data_in = 1111, data_out = dead
+                  60 reset = 0, MemWrite = 1, MemRead = 1, addr_in = 08, data_in = adad, data_out = dead
+                  70 reset = 0, MemWrite = 1, MemRead = 1, addr_in = 08, data_in = adad, data_out = beef
+                  80 reset = 0, MemWrite = 0, MemRead = 1, addr_in = 08, data_in = adad, data_out = beef
+                  90 reset = 0, MemWrite = 0, MemRead = 1, addr_in = 08, data_in = adad, data_out = adad
+$finish called from file "mem_fixture.v", line 26.
+$finish at simulation time                  300
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 300
+CPU Time:      0.340 seconds;       Data structure size:   0.0Mb
+Wed Nov 29 12:51:11 2017
