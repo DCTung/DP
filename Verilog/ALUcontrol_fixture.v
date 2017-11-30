@@ -12,6 +12,10 @@ ALUcontrol A1(funct, ALUop, operation);
 initial
 begin
 	ALUop = 2'b11; funct = 4'b0001;
+	#5;
+	ALUop = 0;
+	#5
+	ALUop = 2'b11;
 		  #10  funct = 4'b0010;
 		  #10  funct = 4'b0011;
 		  #10  funct = 4'b0100;
