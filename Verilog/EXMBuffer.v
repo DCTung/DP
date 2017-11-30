@@ -1,6 +1,6 @@
 module EXMBuffer(
   input [15:0] ALU_Result, ALU_Remainder,
-  input [3:0] movOP_in; //not sure about this
+  input [3:0] movOP_in, //not sure about this
 
 
   input MemtoReg_in, MemWrite_in, MemRead_in, R15_in, FLUSH_EX, RegWrite,
@@ -36,7 +36,7 @@ module EXMBuffer(
     MemWrite_out = MemWrite_in;
     MemRead_out = MemRead_in;
     R15_out = R15_in;
-    RegWrite_out = regWrite;
+    RegWrite_out = RegWrite;
 
     ALU_Result_out = ALU_Result;
     ALU_Remainder_out = ALU_Remainder_out;
@@ -55,5 +55,6 @@ module EXMBuffer(
     ALU_Remainder_out = 0;
     movOp_out = 0;
     EXM_RegRD_out = 0;
-  end
+    end
+end
 endmodule
