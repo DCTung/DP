@@ -24,7 +24,7 @@ always@(posedge clk or negedge reset)
 		m[8'h08] <= 16'hBEEF; //m[08 - 09] = BEEF;
 		//m[8'h09] <= 8'hEF;
 
-		for(i = 8'h10; i < 255; i = i + 1)
+		for(i = 8'h10; i < 255; i = i + 2)
 			m[i] <= 16'h0000;
 	end
 	else if(MemRead && MemWrite)
