@@ -1,7 +1,7 @@
 module IM (
 	input [7:0] addr_in, 
 	output reg [7:0] addr_out, 
-	output reg [15:0] instr);
+	output reg [15:0] instruc_out);
 	reg [15:0] mem[254:0];
 	always@(*)
 		begin
@@ -34,7 +34,7 @@ module IM (
 		 mem[8'h36] = 16'hEFFF;
 		 mem[8'h38] = 16'h0000;
 	
-		instr = mem[addr_in];
+		instruc_out = mem[addr_in];
 		addr_out = addr_in;
 	end
 endmodule
