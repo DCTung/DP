@@ -1,42 +1,49 @@
-`include "Control.v";
+`include "control.v";
 
 module control_fixture;
-
+reg clk, reset;
 reg[3:0] opcode;
 wire R15, ALUSrc, MemToReg, RegWrite, MemRead, MemWrite, Branch, ALUOP;
 
 initial
-  $monitor($time, " R15: %b, ALUSrc: %b, MemToReg: %b, RegWRite: %b, MemRead: %b, MemWrite: %b, Branch: %b, ALUOP: %b",
-            R15, ALUSrc, MemToReg, RegWrite, MemRead, MemWrite, Branch, ALUOP);
-  control CUT(opcode,R15, ALUSrc, MemToReg, RegWrite, MemRead, MemWrite, Branch, ALUOP);
+  $monitor($time, "reset = %b, opcode = %b, R15: %b, ALUSrc: %b, MemToReg: %b, RegWRite: %b, MemRead: %b, MemWrite: %b, Branch: %b, ALUOP: %b",
+            reset,opcode,  R15, ALUSrc, MemToReg, RegWrite, MemRead, MemWrite, Branch, ALUOP);
+  control CUT(clk, reset, opcode,R15, ALUSrc, MemToReg, RegWrite, MemRead, MemWrite, Branch, ALUOP);
 
+initial 
+begin
+	clk = 1'b1;
+	forever #10 clk = !clk;
+end 
   initial begin
+    reset = 1;
+    #20 reset = 0;
     opcode = 4'b1111;
-    #5
+    #20
     opcode = 4'b1000;
-    #5
+    #20
     opcode = 4'b1001;
-    #5
+    #20
     opcode = 4'b1010;
-    #5
+    #20
     opcode = 4'b1011;
-    #5
+    #20
     opcode = 4'b1100;
-    #5
+    #20
     opcode = 4'b1101;
-    #5
+    #20
     opcode = 4'b0101;
-    #5
+    #20
     opcode = 4'b0100;
-    #5
+    #20
     opcode = 4'b0110;
-    #5
+    #20
     opcode = 4'b0001;
-    #5
+    #20
     opcode = 4'b0000;
 end
   initial begin
-      #100 $finish;
+      #800 $finish;
       end
   endmodule
 
