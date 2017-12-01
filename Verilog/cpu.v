@@ -34,7 +34,7 @@ begin
 	clk = 1'b1;
 	forever #10 clk = !clk;
 end
-initial
+initial 
 	begin
 				reset = 1;
 		#60		reset = 0; addr_in = 8'h00; constant = 8'h02;
