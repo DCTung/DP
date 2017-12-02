@@ -1,0 +1,183 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Dec  2 13:31 2017
+ 
+ PC: reset = 1, addr_in = 00, addr_out = 00 
+   adder: addr_in = 00, constant = 02, addr_out = 00, 
+   IM: addr_in = 00, addr_out = 00, instruct_out = f120, 
+   IFID: instruc_in = f120, addr_in = 00, instruc_out = f120, opcode = 1111, funct = 0000, addr_out = 00, offset = 000100100000
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 02 
+   adder: addr_in = 02, constant = 02, addr_out = 02, 
+   IM: addr_in = 02, addr_out = 02, instruct_out = f121, 
+   IFID: instruc_in = f121, addr_in = 02, instruc_out = f121, opcode = 1111, funct = 0001, addr_out = 02, offset = 000100100001
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 04 
+   adder: addr_in = 04, constant = 02, addr_out = 04, 
+   IM: addr_in = 04, addr_out = 04, instruct_out = 93ff, 
+   IFID: instruc_in = 93ff, addr_in = 04, instruc_out = 93ff, opcode = 1001, funct = 1111, addr_out = 04, offset = 001111111111
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 06 
+   adder: addr_in = 06, constant = 02, addr_out = 06, 
+   IM: addr_in = 06, addr_out = 06, instruct_out = 834c, 
+   IFID: instruc_in = 834c, addr_in = 06, instruc_out = 834c, opcode = 1000, funct = 1100, addr_out = 06, offset = 001101001100
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 08 
+   adder: addr_in = 08, constant = 02, addr_out = 08, 
+   IM: addr_in = 08, addr_out = 08, instruct_out = f564, 
+   IFID: instruc_in = f564, addr_in = 08, instruc_out = f564, opcode = 1111, funct = 0100, addr_out = 08, offset = 010101100100
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 0a 
+   adder: addr_in = 0a, constant = 02, addr_out = 0a, 
+   IM: addr_in = 0a, addr_out = 0a, instruct_out = f155, 
+   IFID: instruc_in = f155, addr_in = 0a, instruc_out = f155, opcode = 1111, funct = 0101, addr_out = 0a, offset = 000101010101
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 0c 
+   adder: addr_in = 0c, constant = 02, addr_out = 0c, 
+   IM: addr_in = 0c, addr_out = 0c, instruct_out = fff1, 
+   IFID: instruc_in = fff1, addr_in = 0c, instruc_out = fff1, opcode = 1111, funct = 0001, addr_out = 0c, offset = 111111110001
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 0e 
+   adder: addr_in = 0e, constant = 02, addr_out = 0e, 
+   IM: addr_in = 0e, addr_out = 0e, instruct_out = f487, 
+   IFID: instruc_in = f487, addr_in = 0e, instruc_out = f487, opcode = 1111, funct = 0111, addr_out = 0e, offset = 010010000111
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 10 
+   adder: addr_in = 10, constant = 02, addr_out = 10, 
+   IM: addr_in = 10, addr_out = 10, instruct_out = f468, 
+   IFID: instruc_in = f468, addr_in = 10, instruc_out = f468, opcode = 1111, funct = 1000, addr_out = 10, offset = 010001101000
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 12 
+   adder: addr_in = 12, constant = 02, addr_out = 12, 
+   IM: addr_in = 12, addr_out = 12, instruct_out = 9402, 
+   IFID: instruc_in = 9402, addr_in = 12, instruc_out = 9402, opcode = 1001, funct = 0010, addr_out = 12, offset = 010000000010
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 14 
+   adder: addr_in = 14, constant = 02, addr_out = 14, 
+   IM: addr_in = 14, addr_out = 14, instruct_out = a696, 
+   IFID: instruc_in = a696, addr_in = 14, instruc_out = a696, opcode = 1010, funct = 0110, addr_out = 14, offset = 011010010110
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 16 
+   adder: addr_in = 16, constant = 02, addr_out = 16, 
+   IM: addr_in = 16, addr_out = 16, instruct_out = b696, 
+   IFID: instruc_in = b696, addr_in = 16, instruc_out = b696, opcode = 1011, funct = 0110, addr_out = 16, offset = 011010010110
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 18 
+   adder: addr_in = 18, constant = 02, addr_out = 18, 
+   IM: addr_in = 18, addr_out = 18, instruct_out = c696, 
+   IFID: instruc_in = c696, addr_in = 18, instruc_out = c696, opcode = 1100, funct = 0110, addr_out = 18, offset = 011010010110
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 1a 
+   adder: addr_in = 1a, constant = 02, addr_out = 1a, 
+   IM: addr_in = 1a, addr_out = 1a, instruct_out = 6704, 
+   IFID: instruc_in = 6704, addr_in = 1a, instruc_out = 6704, opcode = 0110, funct = 0100, addr_out = 1a, offset = 011100000100
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 1c 
+   adder: addr_in = 1c, constant = 02, addr_out = 1c, 
+   IM: addr_in = 1c, addr_out = 1c, instruct_out = fb10, 
+   IFID: instruc_in = fb10, addr_in = 1c, instruc_out = fb10, opcode = 1111, funct = 0000, addr_out = 1c, offset = 101100010000
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 1e 
+   adder: addr_in = 1e, constant = 02, addr_out = 1e, 
+   IM: addr_in = 1e, addr_out = 1e, instruct_out = 5705, 
+   IFID: instruc_in = 5705, addr_in = 1e, instruc_out = 5705, opcode = 0101, funct = 0101, addr_out = 1e, offset = 011100000101
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 20 
+   adder: addr_in = 20, constant = 02, addr_out = 20, 
+   IM: addr_in = 20, addr_out = 20, instruct_out = fb20, 
+   IFID: instruc_in = fb20, addr_in = 20, instruc_out = fb20, opcode = 1111, funct = 0000, addr_out = 20, offset = 101100100000
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 22 
+   adder: addr_in = 22, constant = 02, addr_out = 22, 
+   IM: addr_in = 22, addr_out = 22, instruct_out = 4702, 
+   IFID: instruc_in = 4702, addr_in = 22, instruc_out = 4702, opcode = 0100, funct = 0010, addr_out = 22, offset = 011100000010
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 24 
+   adder: addr_in = 24, constant = 02, addr_out = 24, 
+   IM: addr_in = 24, addr_out = 24, instruct_out = f110, 
+   IFID: instruc_in = f110, addr_in = 24, instruc_out = f110, opcode = 1111, funct = 0000, addr_out = 24, offset = 000100010000
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 26 
+   adder: addr_in = 26, constant = 02, addr_out = 26, 
+   IM: addr_in = 26, addr_out = 26, instruct_out = f110, 
+   IFID: instruc_in = f110, addr_in = 26, instruc_out = f110, opcode = 1111, funct = 0000, addr_out = 26, offset = 000100010000
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 28 
+   adder: addr_in = 28, constant = 02, addr_out = 28, 
+   IM: addr_in = 28, addr_out = 28, instruct_out = c890, 
+   IFID: instruc_in = c890, addr_in = 28, instruc_out = c890, opcode = 1100, funct = 0000, addr_out = 28, offset = 100010010000
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 2a 
+   adder: addr_in = 2a, constant = 02, addr_out = 2a, 
+   IM: addr_in = 2a, addr_out = 2a, instruct_out = f880, 
+   IFID: instruc_in = f880, addr_in = 2a, instruc_out = f880, opcode = 1111, funct = 0000, addr_out = 2a, offset = 100010000000
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 2c 
+   adder: addr_in = 2c, constant = 02, addr_out = 2c, 
+   IM: addr_in = 2c, addr_out = 2c, instruct_out = d892, 
+   IFID: instruc_in = d892, addr_in = 2c, instruc_out = d892, opcode = 1101, funct = 0010, addr_out = 2c, offset = 100010010010
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 2e 
+   adder: addr_in = 2e, constant = 02, addr_out = 2e, 
+   IM: addr_in = 2e, addr_out = 2e, instruct_out = ca92, 
+   IFID: instruc_in = ca92, addr_in = 2e, instruc_out = ca92, opcode = 1100, funct = 0010, addr_out = 2e, offset = 101010010010
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 30 
+   adder: addr_in = 30, constant = 02, addr_out = 30, 
+   IM: addr_in = 30, addr_out = 30, instruct_out = fcc0, 
+   IFID: instruc_in = fcc0, addr_in = 30, instruc_out = fcc0, opcode = 1111, funct = 0000, addr_out = 30, offset = 110011000000
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 32 
+   adder: addr_in = 32, constant = 02, addr_out = 32, 
+   IM: addr_in = 32, addr_out = 32, instruct_out = fdd1, 
+   IFID: instruc_in = fdd1, addr_in = 32, instruc_out = fdd1, opcode = 1111, funct = 0001, addr_out = 32, offset = 110111010001
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 34 
+   adder: addr_in = 34, constant = 02, addr_out = 34, 
+   IM: addr_in = 34, addr_out = 34, instruct_out = fcd0, 
+   IFID: instruc_in = fcd0, addr_in = 34, instruc_out = fcd0, opcode = 1111, funct = 0000, addr_out = 34, offset = 110011010000
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 36 
+   adder: addr_in = 36, constant = 02, addr_out = 36, 
+   IM: addr_in = 36, addr_out = 36, instruct_out = efff, 
+   IFID: instruc_in = efff, addr_in = 36, instruc_out = efff, opcode = 1110, funct = 1111, addr_out = 36, offset = 111111111111
+
+ 
+ PC: reset = 0, addr_in = 00, addr_out = 38 
+   adder: addr_in = 38, constant = 02, addr_out = 38, 
+   IM: addr_in = 38, addr_out = 38, instruct_out = 0000, 
+   IFID: instruc_in = 0000, addr_in = 38, instruc_out = 0000, opcode = 0000, funct = 0000, addr_out = 38, offset = 000000000000
+
+$finish called from file "cpu_fixture.v", line 17.
+$finish at simulation time                  580
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 580
+CPU Time:      0.340 seconds;       Data structure size:   0.0Mb
+Sat Dec  2 13:31:08 2017
