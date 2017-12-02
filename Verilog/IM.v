@@ -1,9 +1,11 @@
 module IM (
+	input reset,
 	input [7:0] addr_in, 
 	output reg [7:0] addr_out, 
 	output reg [15:0] instruc_out);
-	reg [15:0] mem[254:0];
-	always@(*)
+	reg [15:0] mem[59:0];
+	integer i,j;
+	always@(reset)
 		begin
 	         mem[8'h00] = 16'hF120;
 	         mem[8'h02] = 16'hF121;
@@ -28,12 +30,17 @@ module IM (
 		 mem[8'h28] = 16'hC890;
 		 mem[8'h2A] = 16'hF886;
 		 mem[8'h2C] = 16'hD892;
+		 mem[8'h2E] = 16'hCA92;
 		 mem[8'h30] = 16'hFCC0;
 		 mem[8'h32] = 16'hFDD1;
 		 mem[8'h34] = 16'hFCD0;
 		 mem[8'h36] = 16'hEFFF;
 		 mem[8'h38] = 16'h0000;
-	
+		for(i = 0; i < 60; i = i + 2)
+			$display("mem[%h] = %h", i, mem[i]);
+		end
+	always@(*)
+	begin
 		instruc_out = mem[addr_in];
 		addr_out = addr_in;
 	end
