@@ -7,10 +7,10 @@ module MWBBuffer(
 
   output reg MemToReg_out, RegWrite_out,
   output reg [15:0] ALU_Result_out, ReadData_out,
-  output [3:0] movOP_out,
+  output reg [3:0] movOP_out
   //remainder?
-  )
-  always @(*)
+  );
+  always@(*)
   begin
     MemToReg_out = MemToReg_in;
     RegWrite_out = RegWrite_in;
