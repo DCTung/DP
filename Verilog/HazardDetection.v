@@ -5,22 +5,22 @@ module HazardDetection(
 
   input [3:0] IFID_op1, IFID_op2, IDEX_op1,
   input IDEX_MemRead, rst,
-  output STALL,
-  output PCWrite, IFID_Write
-  )
+  output reg STALL,
+  output reg PCWrite, IFID_Write
+  );
 
   always@(*)
   if(!rst)
   begin
-    if(IDEX_MemRead == 1 && (IFIDop1 == IDEX_op1 || IFIDop2 == IDEX_op1))
+    if(IDEX_MemRead == 1 && (IFID_op1 == IDEX_op1 || IFID_op2 == IDEX_op1))
     begin
-      STALL<=1;
+      STALL=1;
       PCWrite =0;
       IFID_Write =0;
     end
     else
     begin
-      STALL<=0;
+      STALL=0;
       PCWrite = 1;
       IFID_Write = 1;
     end
@@ -31,3 +31,4 @@ endmodule
 if(IDEX.MEMRead and ((idex.regrt = ifid.regrs) or idex.regrt = ifid.regret)))
 stall
 */
+
