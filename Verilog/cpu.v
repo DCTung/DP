@@ -34,12 +34,8 @@ wire [15:0] op1, op2, Reg15;
 
 //IDEX_buffer
 reg IDEX_FLUSH;
-//reg [15:0] RD1, RD2;
 reg [15:0] signExtendedR2;
-//reg [3:0] funct_code_in;
 reg [15:0] IFID_RS, IFID_RT;
-//reg R15_in, ALUSrc_in, MemToReg_in, RegWrite_in, MEmRead_in, MemWrite_in, Branch_in;
-//reg [1:0] ALUOP_in;
 wire R15_out, ALUSrc_out, MemToReg_out, RegWrite_out, MeRead_out, MemWrite_out, Branch_out;
 wire [1:0] ALUOP_out;
 wire [15:0] RD1_out, RD2_out, signExtendedR2_out;
