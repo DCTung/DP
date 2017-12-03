@@ -14,6 +14,6 @@ initial
 	begin
 		reset = 1;
 		#20 reset = 0; 
-		#560 $finish;
+		#560 $finish; // runs through the entire instruction list, if want few instructions reduce the time to #40 or so
 	end
 endmodule
