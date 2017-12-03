@@ -7,7 +7,7 @@ reg EM_RegWrite, MWB_RegWrite;
 wire [1:0] ForwardA, ForwardB;
 
 initial
-  $monitor($time, "\n Input \n EM_RD: %h MWB_RD: %h ID_OP1: %h ID_OP2: %h \n EM_RegWrite: %b MWB_RegWrite: %b \n OUTPUT \n ForwardA: %h ForwardB: %h", EM_RD, MWB_RD, ID_OP1, ID_OP2, EM_RegWrite, MWB_RegWrite, FowardA, ForwardB);
+  $monitor($time, "\n Input \n EM_RD: %h MWB_RD: %h ID_OP1: %h ID_OP2: %h \n EM_RegWrite: %b MWB_RegWrite: %b \n OUTPUT \n ForwardA: %h ForwardB: %h", EM_RD, MWB_RD, ID_OP1, ID_OP2, EM_RegWrite, MWB_RegWrite, ForwardA, ForwardB);
 
 ForwardingUnit FU(EM_RD, MWB_RD, ID_OP1, ID_OP2, EM_RegWrite, MWB_RegWrite, FowardA, ForwardB);
 

@@ -46,16 +46,16 @@ module FowardingUnit(
   );
   always@(*)
   begin
-    if((EM_RegWrite) && (EM_RD != 0) && (EM_RD = ID_OP1))
+    if((EM_RegWrite) && (EM_RD != 0) && (EM_RD == ID_OP1))
       ForwardA = 2'b10;
-    else if((MWB_RegWrite) && (MWB_RD !=0) && (MWB_RD = ID_OP1))
+    else if((MWB_RegWrite) && (MWB_RD !=0) && (MWB_RD == ID_OP1))
       ForwardA = 2'b01;
     else
       ForwardA = 2'b00;
 
-    if ((EM_RegWrite)&&(EM_RD !=0)&&(EM_RD = ID_OP2))
+    if ((EM_RegWrite)&&(EM_RD !=0)&&(EM_RD == ID_OP2))
       ForwardB = 2'b10;
-    else if((MWB_RegWrite)&&(MWB_RD != 0) && (MWB_RD = ID_OP2))
+    else if((MWB_RegWrite)&&(MWB_RD != 0) && (MWB_RD == ID_OP2))
       ForwardB = 2'b01;
     else
       ForwardB = 2'b00;
