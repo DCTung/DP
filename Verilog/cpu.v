@@ -5,6 +5,8 @@
 `include "control.v"
 `include "RegFile.v"
 `include "IDEXBuffer.v"
+`include "ALU.v"
+`include "ALUcontrol.v"
 
 module cpu(input clk, reset);
 //PC signals
@@ -33,7 +35,7 @@ reg [3:0] Writereg;
 wire [15:0] op1, op2, Reg15;
 
 //IDEX_buffer
-reg IDEX_FLUSH;
+reg IDEX_FLUSH = 0;
 reg [15:0] signExtendedR2;
 reg [15:0] IFID_RS, IFID_RT;
 wire R15_out, ALUSrc_out, MemToReg_out, RegWrite_out, MeRead_out, MemWrite_out, Branch_out;
@@ -42,6 +44,14 @@ wire [15:0] RD1_out, RD2_out, signExtendedR2_out;
 wire [3:0] funct_code_out;
 wire [15:0] IFID_RS_OUT, IFID_RT_OUT;
 
+//ALUcontrol
+wire [3:0] operation;
+
+//ALU
+wire signed [15:0] result;
+wire [15:0] remainder;
+wire o;
+
 			adder         add1(.clk(clk), .reset(reset), .addr_in(addr_out), .constant(constant), .addr_out(addr_out));
 			PC             pc1(.addr_in(add1.addr_out), .addr_out(addr_out));
 			IM             im1(.reset(reset), .addr_in(pc1.addr_out), .addr_out(addr_out), .instruc_out(instruc_out));
@@ -49,15 +59,19 @@ wire [15:0] IFID_RS_OUT, IFID_RT_OUT;
 			control 	c1(.clk(clk), .reset(reset), .con_opcode(IFID.opcode), .R15(R15), .ALUSrc(ALUSrc), .MemToReg(MemToReg), .RegWrite(RegWrite), .MemRead(MemRead), .MemWrite(MemWrite), .Branch(Branch), .ALUOP(ALUOP));
 			RegFile		r1(.instruc_in(IFID.instruc_out), .Writedata(Writedata), .Writereg(Writereg), .RegWrite(c1.RegWrite), .reset(reset), .op1(op1), .op2(op2), .Reg15(Reg15));
 			IDEXBuffer    IDEX(.IDEX_FLUSH(IDEX_FLUSH), .RD1(r1.op1), .RD2(r1.op2), .signExtendedR2(signExtendedR2), .funct_code_in(IFID.funct), .IFID_RS(IFID_RS), .IFID_RT(IFID_RT), .R15_in(c1.R15), .ALUSrc_in(c1.ALUSrc), .MemToReg_in(c1.MemToReg), .RegWrite_in(c1.RegWrite), .MemRead_in(c1.MemRead), .MemWrite_in(c1.MemWrite), .Branch_in(c1.Branch), .ALUOP_in(c1.ALUOP), .R15_out(R15_out), .ALUSrc_out(ALUSrc_out), .MemToReg_out(MemToReg_out), .RegWrite_out(RegWrite_out), .MemRead_out(MemRead_out), .MemWrite_out(MemWrite_out), .Branch_out(Branch_out), .ALUOP_out(ALUOP_out), .RD1_out(RD1_out), .RD2_out(RD2_out), .signExtendedR2_out(signExtendedR2_out), .funct_code_out(funct_code_out), .IFID_RS_OUT(IFID_RS_OUT), .IFID_RT_OUT(IFID_RT_OUT));
+			ALUcontrol     ac1(.funct(IDEX.funct_code_out), .ALUop(IDEX.ALUOP_out), .operation(operation));
+			ALU		a1(.clk(clk), .reset(reset), .operation(ac1.operation), .op1(IDEX.RD1_out), .op2(IDEX.RD2_out), .result(result), .remainder(remainder), .o(o));
 
-initial	$monitor(" \n    PC: reset = %b, addr_in = %h, addr_out = %h \n   ADDER: addr_in = %h, constant = %h, addr_out = %h, \n   IM: addr_in = %h, addr_out = %h, instruct_out = %h, \n   IFID: instruc_in = %h, addr_in = %h, instruc_out = %h, opcode = %b, funct = %b, addr_out = %h, offset = %b\n   CONTROL: opcode = %b, R15 = %b, ALUSrc = %b, MemtoReg = %b, RegWrite = %b, MemRead = %b, MemWrite = %b, Branch = %b, ALUOP = %b\n   REGFILE: instruc_in = %h, WriteData = %h, WriteReg = %d, RegWrite = %b, op1 = %h, op2 = %h, Reg15 = %h \n   IDEX: IDEX_FLUSH = %b, RD1 = %h, RD2 = %h, signExtendedR2 = %b, funct_code_in = %b, IFID_RS = %h, IFID_RT = %h, R15_in = %b, ALUSrc_in = %b, MemToReg_in = %b, RegWrite_in  = %b, MemRead_in = %b, MemWrite_in = %b, Branch_in = %b, ALUOP_in = %b, R15_out = $b, ALUSrc_out = %b, MemToReg_out = %b, RegWrite_out = %b, MemRead_out = %b, MemWrite_out = %b, Branch_out = %b, ALUOP_out = %b, RD1_out = %h, RD2_out = %h, signExtendedR2_out = %h, funct_code_out = %b, IFID_RS_OUT = %h, IFID_RT_OUT = %h", 
+initial	$monitor(" \n    PC: reset = %b, addr_in = %h, addr_out = %h \n   ADDER: addr_in = %h, constant = %h, addr_out = %h, \n   IM: addr_in = %h, addr_out = %h, instruct_out = %h, \n   IFID: instruc_in = %h, addr_in = %h, instruc_out = %h, opcode = %b, funct = %b, addr_out = %h, offset = %b\n   CONTROL: opcode = %b, R15 = %b, ALUSrc = %b, MemtoReg = %b, RegWrite = %b, MemRead = %b, MemWrite = %b, Branch = %b, ALUOP = %b\n   REGFILE: instruc_in = %h, WriteData = %h, WriteReg = %d, RegWrite = %b, op1 = %h, op2 = %h, Reg15 = %h \n   IDEX: IDEX_FLUSH = %b, RD1 = %h, RD2 = %h, signExtendedR2 = %b, funct_code_in = %b, IFID_RS = %h, IFID_RT = %h, R15_in = %b, ALUSrc_in = %b, MemToReg_in = %b, RegWrite_in  = %b, MemRead_in = %b, MemWrite_in = %b, Branch_in = %b, ALUOP_in = %b, R15_out = %b, ALUSrc_out = %b, MemToReg_out = %b, RegWrite_out = %b, MemRead_out = %b, MemWrite_out = %b, Branch_out = %b, ALUOP_out = %b, RD1_out = %h, RD2_out = %h, signExtendedR2_out = %h, funct_code_out = %b, IFID_RS_OUT = %h, IFID_RT_OUT = %h \n   ALU: operation = %b, op1 = %h, op2 = %h result = %h remainder = %h o = %b \n   ALUcontrol: funct = %b, ALUop = %b operation = %b ", 
 reset, addr_in, addr_out,
 pc1.addr_out, add1.constant, addr_out,
 pc1.addr_out, addr_out, instruc_out,
 im1.instruc_out, im1.addr_out, instruc_out, opcode, funct, addr_out, offset,
 IFID.opcode, R15, ALUSrc, MemToReg, RegWrite, MemRead,MemWrite, Branch, ALUOP,
 IFID.instruc_out, Writedata, Writereg, c1.RegWrite, op1, op2, Reg15,
-IDEX_FLUSH,r1.op1, r1.op2,signExtendedR2,IFID.funct,IFID_RS,IFID_RT,c1.R15,c1.ALUSrc,c1.MemToReg,c1.RegWrite,c1.MemRead,c1.MemWrite,c1.Branch,c1.ALUOP,R15_out,ALUSrc_out,MemToReg_out,RegWrite_out,MemRead_out,MemWrite_out,Branch_out, ALUOP_out,RD1_out,RD2_out,signExtendedR2_out,funct_code_out,IFID_RS_OUT,IFID_RT_OUT);
+IDEX_FLUSH,r1.op1, r1.op2,signExtendedR2,IFID.funct,IFID_RS,IFID_RT,c1.R15,c1.ALUSrc,c1.MemToReg,c1.RegWrite,c1.MemRead,c1.MemWrite,c1.Branch,c1.ALUOP,R15_out,ALUSrc_out,MemToReg_out,RegWrite_out,MemRead_out,MemWrite_out,Branch_out, ALUOP_out,RD1_out,RD2_out,signExtendedR2_out,funct_code_out,IFID_RS_OUT,IFID_RT_OUT,
+ac1.operation, IDEX.RD1_out, IDEX.RD2_out, result, remainder, o,
+IDEX.funct_code_out, IDEX.ALUOP_out, operation);
 
 
 endmodule 
