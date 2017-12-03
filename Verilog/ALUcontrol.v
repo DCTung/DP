@@ -6,6 +6,7 @@ always@(*)
 		begin
 			case(ALUop)
 				2'b11:
+				begin
 					case(funct)
 					4'b0000:
 						operation = 4'b0001;  //add
@@ -18,14 +19,16 @@ always@(*)
 					4'b0111:
 						operation = 4'b0101;  //move
 					4'b1000:
-						operation = 4'b0110;  // swap
+						operation = 4'b0110;  //swap
+					4'b1010:
+						operation = 4'b0111;  //AND gate
+					4'b1011:
+						operation = 4'b1000;  //OR gate
 					default:
 						operation = 4'b0001;  //will never occur
 					endcase
 				end
 				2'b10:
-					operation = 4'b0111;	      //OR & AND operation
-				2'b11:
 					operation = 4'b0001;	      //load & store (add)
 				2'b01:
 					operation = 4'b1001;          //branch (comparison)
