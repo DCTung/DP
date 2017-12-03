@@ -26,3 +26,8 @@ module HazardDetection(
     end
   end
 endmodule
+
+/* double check this from book
+if(IDEX.MEMRead and ((idex.regrt = ifid.regrs) or idex.regrt = ifid.regret)))
+stall
+*/
