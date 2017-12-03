@@ -9,7 +9,7 @@ wire STALL, PCWrite, IFID_Write;
 initial
 $monitor($time, "\n INPUT:\n IFID_op1: %h IFID_op2: %h IDEX_op1: %h \n IDEX_MemRead: %b Reset: %b\n OUTPUT:\n STALL: %b PCWrite: %b IFID_Write: %b", IFID_op1, IFID_op2, IDEX_op1, IDEX_MemRead, rst, STALL, PCWrite, IFID_Write);
 
-HazardDetection_fixture HDF(IFID_op1, IFID_op2, IDEX_op1, IDEX_MemRead, rst, STALL, PCWrite, IFID_Write);
+HazardDetection HDF(IFID_op1, IFID_op2, IDEX_op1, IDEX_MemRead, rst, STALL, PCWrite, IFID_Write);
 
 initial begin
 #10
