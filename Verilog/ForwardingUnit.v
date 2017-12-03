@@ -36,7 +36,7 @@ if(MEMWB.RegWrite && (MEMWB.RegRd !=0) and (MEMWB.RegRD = IDEX.RegRt)) ForwardB 
 
 /* IN THE CONTEXT OF OURS? */
 
-module FowardingUnit(
+module ForwardingUnit(
   //Reg check
   input [3:0] EM_RD, MWB_RD, ID_OP1, ID_OP2,
   //wires
