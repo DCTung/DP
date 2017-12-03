@@ -43,6 +43,20 @@ initial begin
   #5
   EM_RD = 12;
   MWB_RD = 13;
+  ID_OP1 = 11;
+  ID_OP2 = 12;
+  EM_RegWrite = 0;
+  MWB_RegWrite= 1;
+  #5
+  EM_RD = 12;
+  MWB_RD = 13;
+  ID_OP1 = 11;
+  ID_OP2 = 12;
+  EM_RegWrite = 1;
+  MWB_RegWrite= 0;
+  #5
+  EM_RD = 12;
+  MWB_RD = 13;
   ID_OP1 = 16;
   ID_OP2 = 15;
   EM_RegWrite = 1;
