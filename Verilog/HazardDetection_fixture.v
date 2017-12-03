@@ -1,6 +1,6 @@
-`include "HazardDection.v"
+`include "HazardDetection.v"
 
-module HazardDetection_fixture.v
+module HazardDetection_fixture;
 
 reg [3:0] IFID_op1, IFID_op2, IDEX_op1;
 reg IDEX_MemRead, rst;
