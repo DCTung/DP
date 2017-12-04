@@ -13,6 +13,7 @@
 `include "MWBBuffer.v"
 `include "ForwardingUnit.v"
 `include "HazardDetection.v"
+`include "mux2to1.v"
 
 module cpu(input clk, reset);
 //PC signals
@@ -69,6 +70,15 @@ wire [15:0] data_out;
 
 //Mem WB Buffer
 
+
+
+//Forwarding unit
+wire [1:0] ForwardA, ForwardB;
+
+//HazardDetection
+wire STALL,PCWrite,IFID_Write;
+
+
 			adder         add1(.clk(clk), .reset(reset), .addr_in(addr_out), .constant(constant), .addr_out(addr_out));
 			PC             pc1(.addr_in(add1.addr_out), .addr_out(addr_out));
 			IM             im1(.reset(reset), .addr_in(pc1.addr_out), .addr_out(addr_out), .instruc_out(instruc_out));
@@ -86,6 +96,15 @@ wire [15:0] data_out;
 			ForwardingUnit FU(.EM_RD(EXMem.op1), .MWB_RD(Mwb.ReadData), .ID_OP1(IDEX.RD1), .ID_OP2(IDEX.RD2), .EM_RegWrite(EXMem.MemtoReg_out), .MWB_RegWrite(Mwb.RegWrite_out), .ForwardA(ForwardA) ,.ForwardB(ForwardB));
 			//need to parse IDEX so that comparing registers atm RD1_out and RD2_out is full instrc
 			HazardDetection HD(.IFID_op1(IFID.rd1), .IFID_op2(IFID.rd2), .IDEX_op1(IDEX.RD1_out), .IDEX_MemRead(IDEX.MemRead_out), .rst(reset), .STALL(STALL), .PCWrite(PCWrite), .IFID_Write(IFID_Write));
+			branchLogic BL(.rd1(a1.op1),.rd15(a1.remainder),.branch(IDEX.Branch_out), .PCSRC(PCSRC));
+			shiftLeft SL(.signExtendedR2(IDEX.signExtendedR2_out),.shiftedOut(shiftedOut));
+			//need to edit buffer to pass clean addr
+			//need IFID to pass pcADDR to IDEX
+			BL_add BLadder(.SE(SL.signExtendedR2), .PC_in(IDEX.addr_out), .BL_result(BL_result);
+			//branch logic
+			//rd15 from buff and rd1 from buff?
+			//BranchLogic BL_AndGate(.rd1(IDEX
+
 
 initial	$monitor(" \n    PC: reset = %b, addr_in = %h, addr_out = %h \n   ADDER: addr_in = %h, constant = %h, addr_out = %h, \n   IM: addr_in = %h, addr_out = %h, instruct_out = %h, \n   IFID: instruc_in = %h, addr_in = %h, instruc_out = %h, opcode = %b, funct = %b, addr_out = %h, offset = %b\n   CONTROL: opcode = %b, R15 = %b, ALUSrc = %b, MemtoReg = %b, RegWrite = %b, MemRead = %b, MemWrite = %b, Branch = %b, ALUOP = %b\n   REGFILE: instruc_in = %h, WriteData = %h, WriteReg = %d, RegWrite = %b, op1 = %h, op2 = %h, Reg15 = %h \n   IDEX: IDEX_FLUSH = %b, RD1 = %h, RD2 = %h, signExtendedR2 = %b, funct_code_in = %b, IFID_RS = %h, IFID_RT = %h, R15_in = %b, ALUSrc_in = %b, MemToReg_in = %b, RegWrite_in  = %b, MemRead_in = %b, MemWrite_in = %b, Branch_in = %b, ALUOP_in = %b, R15_out = %b, ALUSrc_out = %b, MemToReg_out = %b, RegWrite_out = %b, MemRead_out = %b, MemWrite_out = %b, Branch_out = %b, ALUOP_out = %b, RD1_out = %h, RD2_out = %h, signExtendedR2_out = %h, funct_code_out = %b, IFID_RS_OUT = %h, IFID_RT_OUT = %h \n   ALU: operation = %b, op1 = %h, op2 = %h result = %h remainder = %h o = %b \n   ALUcontrol: funct = %b, ALUop = %b operation = %b \n   EXMem: ALU_Results = %h, ALU_Remainder = %h, movOP_in = %b, MemtoReg_in = %b, MemWrite_in = %b, MemRead_in = %b, R15_in = %b , FLUSH_EX = %b, RegWrite = %b, IDEX_RegRD = %b, MemtoReg_out = %b, MemWrite_out = %b, MemRead_out= %b, R15_out = %b, RegWrite_out = %b , ALU_Result_out = %h, ALU_Remainder_out = %h, movOp_out = %b, EXM_RegRD_out = %b \n   MEM: MemWrite = %b, MemRead= %b, Memaddr_in = %h, data_in = %h, data_out = %h, \n   MemWB: MemToReg_in = %b, RegWrite_in = %b, ALU_Results = %h, ReadData = %h, movOP_in = %b, MemToReg_out = %b, RegWrite_out = %b, ALU_Result_out = %h, ReadData_out = %h, movOp_out = %b, \n ",
 reset, addr_in, addr_out,
