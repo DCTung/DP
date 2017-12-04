@@ -81,6 +81,11 @@ wire [1:0] ForwardA, ForwardB;
 //HazardDetection
 wire STALL,PCWrite,IFID_Write;
 
+//branch stuff
+wire PCSRC;
+wire [15:0] shiftedOut;
+wire [15:0] BL_result;
+
 
 			adder         add1(.clk(clk), .reset(reset), .addr_in(addr_out), .constant(constant), .addr_out(addr_out));
 			PC             pc1(.addr_in(add1.addr_out), .addr_out(addr_out));
