@@ -7,6 +7,6 @@ module SignExtension(
 //take full instr but only grab bottom 4
 always@(*)
 begin
-  signExtended = {{16{toExtend[3]}}, toExtend[3:0};
+  signExtended = {{16{toExtend[3]}}, toExtend[3:0]};
 end
 endmodule
