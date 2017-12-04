@@ -1,4 +1,4 @@
-module IDEXBuffer(
+ module IDEXBuffer(
   input IDEX_FLUSH,
 
   //from RF
@@ -26,7 +26,7 @@ module IDEXBuffer(
   //RF outs
   output reg [15:0] RD1_out, RD2_out,
   output reg [15:0] signExtendedR2_out,
-  output reg [3:0]funct_code_out,
+  output reg [3:0] funct_code_out,
 
   //forwarded Out
   output reg [15:0] IFID_RS_OUT, IFID_RT_OUT);
