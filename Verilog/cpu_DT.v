@@ -14,6 +14,9 @@
 `include "ForwardingUnit.v"
 `include "HazardDetection.v"
 `include "mux2to1.v"
+`include "muxSelector.v"
+`include "BL_add.v"
+`include "BranchLogic.v"
 
 module cpu(input clk, reset);
 //PC signals
@@ -85,8 +88,10 @@ wire STALL,PCWrite,IFID_Write;
 			IFID_buffer   IFID(.instruc_in(im1.instruc_out), .addr_in(im1.addr_out),.instruc_out(instruc_out), .opcode(opcode), .funct(funct), .addr_out(addr_out), .offset(offset), .rd1(rd1), .rd2(rd2));
 			control 	c1(.clk(clk), .reset(reset), .con_opcode(IFID.opcode), .R15(R15), .ALUSrc(ALUSrc), .MemToReg(MemToReg), .RegWrite(RegWrite), .MemRead(MemRead), .MemWrite(MemWrite), .Branch(Branch), .ALUOP(ALUOP));
 			RegFile		r1(.instruc_in(IFID.instruc_out), .Writedata(Writedata), .Writereg(Writereg), .RegWrite(c1.RegWrite), .reset(reset), .op1(op1), .op2(op2), .Reg15(Reg15));
+
 			//dk if we can just grab like this
 			SignExtension signExtend(.toExtend(IFID.instruc_out), .signExtended(signExtended));
+
 			IDEXBuffer    IDEX(.IDEX_FLUSH(IDEX_FLUSH), .RD1(r1.op1), .RD2(r1.op2), .signExtendedR2(signExtend.signExtended), .funct_code_in(IFID.funct), .IFID_RS(IFID_RS), .IFID_RT(IFID_RT), .R15_in(c1.R15), .ALUSrc_in(c1.ALUSrc), .MemToReg_in(c1.MemToReg), .RegWrite_in(c1.RegWrite), .MemRead_in(c1.MemRead), .MemWrite_in(c1.MemWrite), .Branch_in(c1.Branch), .ALUOP_in(c1.ALUOP), .R15_out(R15_out), .ALUSrc_out(ALUSrc_out), .MemToReg_out(MemToReg_out), .RegWrite_out(RegWrite_out), .MemRead_out(MemRead_out), .MemWrite_out(MemWrite_out), .Branch_out(Branch_out), .ALUOP_out(ALUOP_out), .RD1_out(RD1_out), .RD2_out(RD2_out), .signExtendedR2_out(signExtendedR2_out), .funct_code_out(funct_code_out), .IFID_RS_OUT(IFID_RS_OUT), .IFID_RT_OUT(IFID_RT_OUT));
 			ALUcontrol     ac1(.clk(clk), .reset(reset), .funct(IDEX.funct_code_out), .ALUop(IDEX.ALUOP_out), .operation(operation));
 			ALU		a1(.operation(ac1.operation), .op1(IDEX.RD1_out), .op2(IDEX.RD2_out), .result(result), .remainder(remainder), .o(o));
@@ -94,8 +99,12 @@ wire STALL,PCWrite,IFID_Write;
 			mem		m1(.clk(clk), .reset(reset), .MemWrite(EXMem.MemWrite_out), .MemRead(EXMem.MemRead_out), .Memaddr_in(EXMem.ALU_Result_out), .data_in(EXMem.op1_out), .data_out(data_out));
 			MWBBuffer      Mwb(.MemToReg_in(EXMem.MemtoReg_out), .RegWrite_in(EXMem.RegWrite_out), .ALU_Result(EXMBuffer.ALU_Result_out), .ReadData(m1.data_out), .movOP_in(EXMem.movOp_out), .MemToReg_out(MemToReg_out), .RegWrite_out(RegWrite_out), .ALU_Result_out(ALU_Result_out), .ReadData_out(ReadData_out), .movOP_out(movOp_out));
 			ForwardingUnit FU(.EM_RD(EXMem.op1), .MWB_RD(Mwb.ReadData), .ID_OP1(IDEX.RD1), .ID_OP2(IDEX.RD2), .EM_RegWrite(EXMem.MemtoReg_out), .MWB_RegWrite(Mwb.RegWrite_out), .ForwardA(ForwardA) ,.ForwardB(ForwardB));
+
+
 			//need to parse IDEX so that comparing registers atm RD1_out and RD2_out is full instrc
 			HazardDetection HD(.IFID_op1(IFID.rd1), .IFID_op2(IFID.rd2), .IDEX_op1(IDEX.RD1_out), .IDEX_MemRead(IDEX.MemRead_out), .rst(reset), .STALL(STALL), .PCWrite(PCWrite), .IFID_Write(IFID_Write));
+
+
 			branchLogic BL(.rd1(a1.op1),.rd15(a1.remainder),.branch(IDEX.Branch_out), .PCSRC(PCSRC));
 			shiftLeft SL(.signExtendedR2(IDEX.signExtendedR2_out),.shiftedOut(shiftedOut));
 			//need to edit buffer to pass clean addr
