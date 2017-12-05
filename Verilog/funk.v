@@ -27,8 +27,28 @@ ForwardingUnit
 EXMem.op1, Mwb.ReadDate, IDEX.RD1, IDEX.RD2, EXMem.MemtoReg_out, Mwb.RegWrite_out, ForwardA, ForwardB
 
 HazardDetection
-"Hazard Detection: IFID_op1: %h IFID_op2: %h IDEX_op1: "
+"Hazard Detection: IFID_op1: %h IFID_op2: %h  IDEX_op1: %h IDEX_MemRead: %h STALL: %h  PCWrite: %b  IFID_Write: %b"
+IFID.IFID_Fop1, IFID>IFID_Fop2, IDEX.RD1_out, IDEX.MemRead_out, STALL, PCWrite, IFID_Write
 
+BranchLogic
+"rd1: %h, rd15: %h, branch: %h, PCSRC: %b, opcode: %h"
+a1.op1, a1.remainder, IDEX.Branch_out, PCSRC, IDEX.opcode_out
+
+shiftLeft
+"signExtendedR2: %h shiftedOut: %h"
+IDEX.signExtendedR2_out, shiftedOut
+
+
+BLadder
+"SE: %h PC_in: %h BL_result: %h"
+SL.signExtendedR2, IDEX.addr_out, BL_result
+//BL_add BLadder(.SE(SL.signExtendedR2), .PC_in(IDEX.addr_out), .BL_result(BL_result));
+
+
+//shiftLeft SL(.signExtendedR2(IDEX.signExtendedR2_out),.shiftedOut(shiftedOut));
+
+
+//branchLogic BL(.rd1(a1.op1),.rd15(a1.remainder),.branch(IDEX.Branch_out), .PCSRC(PCSRC),.opcode(IDEX.opcode));
 
 //HazardDetection HD(.IFID_op1(IFID.IFID_Fop1), .IFID_op2(IFID.IFID_Fop2), .IDEX_op1(IDEX.RD1_out), .IDEX_MemRead(IDEX.MemRead_out), .rst(reset), .STALL(STALL), .PCWrite(PCWrite), .IFID_Write(IFID_Write));
 
