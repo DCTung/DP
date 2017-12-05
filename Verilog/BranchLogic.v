@@ -26,5 +26,7 @@ module branchLogic(
         default:
             PCSRC=1;
       endcase
+    else
+      PCSRC=1;
   end
 endmodule

@@ -13,4 +13,8 @@ initial
   #5 signExtendedR2 = 19;
   #5 signExtendedR2 = 7;
   end
+
+  initial begin
+    #420 $finish;
+  end
 endmodule
