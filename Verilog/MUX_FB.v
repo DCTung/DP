@@ -1,4 +1,4 @@
-module MUX_BA(
+module MUX_FB(
   input [1:0] ForwardB,
   input [15:0] IDEX_op2, EM_op2, MWB_op2,
   output reg [15:0] MUXFB_out

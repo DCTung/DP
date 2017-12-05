@@ -1,6 +1,6 @@
-`include "MUX_BA.v"
+`include "MUX_FB.v"
 
-module MUX_BA_fixture;
+module MUX_FB_fixture;
   reg [1:0] ForwardB;
   reg [15:0] IDEX_op2, EM_op2, MWB_op2;
   wire [15:0] MUXFB_out;
