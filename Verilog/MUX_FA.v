@@ -7,7 +7,7 @@ module MUX_FA(
   always@(*)
   begin
     case(ForwardA)
-      2'00:
+      2'b00:
         MUXFA_out<=IDEX_op1;
       2'b10:
         MUXFA_out<= EM_op1;
