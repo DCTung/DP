@@ -4,7 +4,7 @@ module shiftLeft_fixture;
   wire [15:0] shiftedOut;
 
 initial
-  $monitor($time, "\n Input: \nsignExtendedR2 = %h \n Output: \n shiftedOut = %h", signExtendedR2, shiftedOut);
+  $monitor($time, "\n Input: \nsignExtendedR2 = %h \n Output: \n shiftedOut = %h\n", signExtendedR2, shiftedOut);
 
 shiftLeft SL(signExtendedR2, shiftedOut);
 initial

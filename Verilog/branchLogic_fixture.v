@@ -6,7 +6,12 @@ module branchLogic_fixture;
   output reg PCSRC;
 
   initial
-    $monitor($time, "\n Input:\n Read1: %h,  RD15: %h Branch: %b\nOutput:\n PCSRC: %h")
+    $monitor($time, "\n Input:\n Read1: %h,  RD15: %h Branch: %b\nOutput:\n PCSRC: %b", rd1, rd15, branch, PCSRC);
+
+  branchLogic BL_FIX(rd1, rd15, branch, PCSRC);
+  initial begin
+    #5 rd1 = 5; rd = 15;
+  end
 
 
 
