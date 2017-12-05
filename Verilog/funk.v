@@ -26,7 +26,11 @@ ForwardingUnit
 "ForwardingUnit EM_RD: %h MWB_RD: %h ID_OP1: %h ID_OP2: %h EM_RegWrite: %h MWB_RegWrite: %h ForwardA: %b ForwardB: %b"
 EXMem.op1, Mwb.ReadDate, IDEX.RD1, IDEX.RD2, EXMem.MemtoReg_out, Mwb.RegWrite_out, ForwardA, ForwardB
 
-//ForwardingUnit FU(.EM_RD(EXMem.op1), .MWB_RD(Mwb.ReadData), .ID_OP1(IDEX.RD1), .ID_OP2(IDEX.RD2), .EM_RegWrite(EXMem.MemtoReg_out), .MWB_RegWrite(Mwb.RegWrite_out), .ForwardA(ForwardA) ,.ForwardB(ForwardB));
+HazardDetection
+"Hazard Detection: IFID_op1: %h IFID_op2: %h IDEX_op1: "
+
+
+//HazardDetection HD(.IFID_op1(IFID.IFID_Fop1), .IFID_op2(IFID.IFID_Fop2), .IDEX_op1(IDEX.RD1_out), .IDEX_MemRead(IDEX.MemRead_out), .rst(reset), .STALL(STALL), .PCWrite(PCWrite), .IFID_Write(IFID_Write));
 
 
 //MWBBuffer      Mwb(.MemToReg_in(EXMem.MemtoReg_out), .RegWrite_in(EXMem.RegWrite_out), .ALU_Result(EXMBuffer.ALU_Result_out), .ReadData(m1.data_out), .movOP_in(EXMem.movOp_out), .MemToReg_out(MemToReg_out), .RegWrite_out(RegWrite_out), .ALU_Result_out(ALU_Result_out), .ReadData_out(ReadData_out), .movOP_out(movOp_out));
