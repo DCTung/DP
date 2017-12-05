@@ -1,6 +1,6 @@
 module MUX_BA(
   input [1:0] ForwardB,
-  input [15:0] IDEX_op1, EM_op1, MWB_op1,
+  input [15:0] IDEX_op2, EM_op2, MWB_op2,
   output reg [15:0] MUXFB_out
   );
 
@@ -8,11 +8,11 @@ module MUX_BA(
   begin
     case(ForwardB)
       2'b00:
-        MUXFB_out =IDEX_op1;
+        MUXFB_out =IDEX_op2;
       2'b10:
-        MUXFB_out = EM_op1;
+        MUXFB_out = EM_op2;
       2'b01:
-        MUXFB_out =MWB_op1;
+        MUXFB_out =MWB_op2;
     endcase
   end
 endmodule

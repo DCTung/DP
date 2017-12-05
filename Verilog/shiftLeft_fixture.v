@@ -1,4 +1,4 @@
-`incude "shiftLeft.v"
+`include "shiftLeft.v"
 module shiftLeft_fixture;
   reg [15:0] signExtendedR2;
   wire [15:0] shiftedOut;
