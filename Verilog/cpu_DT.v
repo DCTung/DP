@@ -17,6 +17,7 @@
 `include "muxSelector.v"
 `include "BL_add.v"
 `include "BranchLogic.v"
+`include "shiftLeft.v"
 
 module cpu(input clk, reset);
 //PC signals
