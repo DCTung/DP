@@ -4,6 +4,8 @@ module MWBBuffer(
   input [15:0] ReadData,
   input [3:0] movOP_in,
   //remainder?
+  
+  //forwarding
 
   output reg MemToReg_out, RegWrite_out,
   output reg [15:0] ALU_Result_out, ReadData_out,
