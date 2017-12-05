@@ -4,9 +4,9 @@ module ALUcontrol(
 		input [1:0] ALUop,
 		output reg [3:0] operation );
 always@(posedge clk, negedge reset)
-	if(reset)
-		operation <= 4'h1;
-	else
+	//if(reset)
+	//	operation <= 4'h1;
+	//else
 		begin
 			case(ALUop)
 				2'b11:
@@ -28,8 +28,8 @@ always@(posedge clk, negedge reset)
 						operation <= 4'b0111;  //AND gate
 					4'b1011:
 						operation <= 4'b1000;  //OR gate
-					default:
-						operation <= 4'b0001;  //will never occur
+				//	default:
+					//	operation <= 4'b0001;  //will never occur
 					endcase
 				end
 				2'b10:
