@@ -10,7 +10,7 @@ always@(posedge clk, negedge reset)
 		begin
 			case(ALUop)
 				2'b11:
-				begin
+				//begin
 					case(funct)
 					4'b0000:
 						operation <= 4'b0001;  //add
@@ -31,7 +31,7 @@ always@(posedge clk, negedge reset)
 				//	default:
 					//	operation <= 4'b0001;  //will never occur
 					endcase
-				end
+				//end
 				2'b10:
 					operation <= 4'b0001;	      //load & store (add)
 				2'b01:

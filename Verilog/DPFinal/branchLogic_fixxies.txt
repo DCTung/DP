@@ -1,0 +1,28 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Dec  4 17:47 2017
+                   0
+ Input:
+ Read1: xxxx,  RD15: xxxx Branch: x
+Output:
+ PCSRC: x
+
+
+                   5
+ Input:
+ Read1: 0005,  RD15: 000f Branch: 1
+Output:
+ PCSRC: 1
+
+
+                  15
+ Input:
+ Read1: 0005,  RD15: 000f Branch: 0
+Output:
+ PCSRC: 1
+
+
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 20
+CPU Time:      0.550 seconds;       Data structure size:   0.0Mb
+Mon Dec  4 17:47:08 2017

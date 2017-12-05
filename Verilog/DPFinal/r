@@ -1,0 +1,184 @@
+
+
+
+PC: reset = 0, addr_in = 02, addr_out = 02 
+
+ADDER: addr_in = 02, constant = 02, addr_out = 02,
+
+IM: Addr_in = 02, Addr_out = xx, instruc_out = f121 
+
+IFIDBUFFER: instruc_in = f121, addr_in = 02, ,instruc_out = f121, opcode = 1111, funct= 0001, addr_out = xx, offset = 000100100001 , IFID_Fop1 = 0001,IFID_Fop2 = 0010 
+
+Control: control = 1111, R15 = 1,ALUSrc= 0,MemToReg = 1,RegWrite = 1,MemRead = 0,MemWrite = 0, Branch = 0, ALUOP = 11 
+
+RegFile:  Instruc_in = f121, Writedata = xxxxxxxxxxxxxxxx Writereg =xxxx RegWrite = 1 reset = 0 op1 = 0f00 op2 = 0050 Reg15 = 0000
+
+IDEX:IDEX_FLUSH =0, RD1 = 0f00,RD2 = 0050, signExtendedR2 = 0000000000000010, funct_code_in =0001, IFID_RS = 1, IFID_RT =2 , R15_in = 1, ALUSrc_in = 0, MemToReg_in =1, RegWrite_in= 1, MemRead_in = 0, MemWrite_in = 0,Branch_in = 0, ALUOP_in =11,R15_out =1,ALUSrc_out = 0 ,MemToReg_out =1,RegWrite_out = 1,MemRead_out =0, MemWrite_out =0 , Branch_out =0,ALUOP_out = 11, RD1_out = 0f00, RD2_out =0050, signExtendedR2_out =0000000000000010, funct_code_out =0001, IFID_RS_OUT =1, IFID_RT_OUT = 2, opcode = 1111, opcode_out = 1111, addr_in = 02, addr_out =xx 
+
+SignExtension toExtend: 0010 signExtend: 0000000000000010
+
+ALUControl funct: 0001 ALUop: 11  operation: 0001
+
+ALU operation: 0001 op1: 0f00 op2: 0050 result: 0f50 remainder: xxxx overflow:x 
+
+EXMBuffer: ALU_Result = 0f00, ALU_Remainder= 0f50, movOP_in= xxxxxxxxxxxxxxxx , MemtoReg_in = x,MemWrite_in =1, MemRead_in = 0, R15_in =0,FLUSH_EX =1, RegWrite =0, IDEX_RegRD =1, ,MemtoReg_out = xxxx, MemWrite_out = 1, MemRead_out =0, R15_out =0,RegWrite_out =1, ALU_Result_out =1, ALU_Remainder_out = 0, movOp_out =xxxxxxxxxxxxxxxx,EXM_RegRD_out = 000x
+
+MEM: MemWrite: xxxx MemRead: 0 MemAddr_in 0 data_in: 0f50 data_out:0f50 
+
+MWBBuffer: MemToReg_in: 0000000000000000 RegWrite_in: 1 ALU_Result: 1 ReadData: 0f50 movOP_in: 0000 MemToReg_out: 0000111101010000 RegWriteOut: 1 ALU_Result_out: 1 ReadData_out: 0000111101010000 movOP_out x
+ X
+
+
+
+
+ LOOK AT ME Pplase ALU operation: 0010 op1: 0f00 op2: 0f00 result: 0000 remainder: 0000 overflow:x 
+EXMBuffer: ALU_Result = 0f00, ALU_Remainder= 0000, movOP_in= 0000000000000000 , MemtoReg_in = x,MemWrite_in =0, MemRead_in = 0, R15_in =0,FLUSH_EX =1, RegWrite =0, IDEX_RegRD =0, ,MemtoReg_out = xxxx, MemWrite_out = 0, MemRead_out =0, R15_out =0,RegWrite_out =1, ALU_Result_out =0, ALU_Remainder_out = 0, movOp_out =xxxxxxxxxxxxxxxx,EXM_RegRD_out = 000x
+MEM: MemWrite: xxxx MemRead: 0 MemAddr_in 0 data_in: 0000 data_out:0000 
+MWBBuffer: MemToReg_in: xxxxxxxxxxxxxxxx RegWrite_in: 0 ALU_Result: 0 ReadData: 0000 movOP_in: xxxx MemToReg_out: 0000000000000000 RegWriteOut: 0 ALU_Result_out: 0 ReadData_out: 0000000000000000 movOP_out x
+ X
+PC: reset = 0, addr_in = 26, addr_out = 26 
+ADDER: addr_in = 26, constant = 02, addr_out = 26,
+IM: Addr_in = 26, Addr_out = xx, instruc_out = f110 
+IFIDBUFFER: instruc_in = f110, addr_in = 26, ,instruc_out = f110, opcode = 1111, funct= 0000, addr_out = xx, offset = 000100010000 , IFID_Fop1 = 0001,IFID_Fop2 = 0001 
+Control: control = 1111, R15 = 1,ALUSrc= 0,MemToReg = 1,RegWrite = 1,MemRead = 0,MemWrite = 0, Branch = 0, ALUOP = 11 
+RegFile:  Instruc_in = f110, Writedata = xxxxxxxxxxxxxxxx Writereg =xxxx RegWrite = 1 reset = 0 op1 = 0f00 op2 = 0f00 Reg15 = 0000
+IDEX:IDEX_FLUSH =0, RD1 = 0f00,RD2 = 0f00, signExtendedR2 = 0000000000000001, funct_code_in =0000, IFID_RS = 1, IFID_RT =1 , R15_in = 1, ALUSrc_in = 0, MemToReg_in =1, RegWrite_in= 1, MemRead_in = 0, MemWrite_in = 0,Branch_in = 0, ALUOP_in =11,R15_out =1,ALUSrc_out = 0 ,MemToReg_out =1,RegWrite_out = 1,MemRead_out =0, MemWrite_out =0 , Branch_out =0,ALUOP_out = 11, RD1_out = 0f00, RD2_out =0f00, signExtendedR2_out =0000000000000001, funct_code_out =0000, IFID_RS_OUT =1, IFID_RT_OUT = 1, opcode = 1111, opcode_out = 1111, addr_in = 26, addr_out =xx 
+SignExtension toExtend: 0001 signExtend: 0000000000000001
+ALUControl funct: 0000 ALUop: 11  operation: 1001
+ALU operation: 1001 op1: 0f00 op2: 0f00 result: 0000 remainder: 0000 overflow:x 
+EXMBuffer: ALU_Result = 0f00, ALU_Remainder= 0000, movOP_in= 0000000000000000 , MemtoReg_in = x,MemWrite_in =1, MemRead_in = 0, R15_in =0,FLUSH_EX =1, RegWrite =0, IDEX_RegRD =1, ,MemtoReg_out = xxxx, MemWrite_out = 1, MemRead_out =0, R15_out =0,RegWrite_out =1, ALU_Result_out =1, ALU_Remainder_out = 0, movOp_out =xxxxxxxxxxxxxxxx,EXM_RegRD_out = 000x
+MEM: MemWrite: xxxx MemRead: 0 MemAddr_in 0 data_in: 0000 data_out:0000 
+MWBBuffer: MemToReg_in: xxxxxxxxxxxxxxxx RegWrite_in: 1 ALU_Result: 1 ReadData: 0000 movOP_in: xxxx MemToReg_out: 0000000000000000 RegWriteOut: 1 ALU_Result_out: 1 ReadData_out: 0000000000000000 movOP_out x
+ X
+PC: reset = 0, addr_in = 28, addr_out = 28 
+ADDER: addr_in = 28, constant = 02, addr_out = 28,
+IM: Addr_in = 28, Addr_out = xx, instruc_out = c890 
+IFIDBUFFER: instruc_in = c890, addr_in = 28, ,instruc_out = c890, opcode = 1100, funct= 0000, addr_out = xx, offset = 100010010000 , IFID_Fop1 = 1000,IFID_Fop2 = 1001 
+Control: control = 1100, R15 = 1,ALUSrc= 0,MemToReg = 1,RegWrite = 1,MemRead = 0,MemWrite = 0, Branch = 0, ALUOP = 11 
+RegFile:  Instruc_in = c890, Writedata = xxxxxxxxxxxxxxxx Writereg =xxxx RegWrite = 1 reset = 0 op1 = ff88 op2 = 0000 Reg15 = 0000
+IDEX:IDEX_FLUSH =0, RD1 = ff88,RD2 = 0000, signExtendedR2 = 1111111111111001, funct_code_in =0000, IFID_RS = 8, IFID_RT =9 , R15_in = 1, ALUSrc_in = 0, MemToReg_in =1, RegWrite_in= 1, MemRead_in = 0, MemWrite_in = 0,Branch_in = 0, ALUOP_in =11,R15_out =1,ALUSrc_out = 0 ,MemToReg_out =1,RegWrite_out = 1,MemRead_out =0, MemWrite_out =0 , Branch_out =0,ALUOP_out = 11, RD1_out = ff88, RD2_out =0000, signExtendedR2_out =1111111111111001, funct_code_out =0000, IFID_RS_OUT =8, IFID_RT_OUT = 9, opcode = 1100, opcode_out = 1100, addr_in = 28, addr_out =xx 
+SignExtension toExtend: 1001 signExtend: 1111111111111001
+ALUControl funct: 0000 ALUop: 11  operation: 0001
+ LOOK AT ME Pplase ALU operation: 0001 op1: ff88 op2: 0000 result: ff88 remainder: 0000 overflow:x 
+EXMBuffer: ALU_Result = ff88, ALU_Remainder= ff88, movOP_in= 0000000000000000 , MemtoReg_in = x,MemWrite_in =1, MemRead_in = 0, R15_in =0,FLUSH_EX =1, RegWrite =0, IDEX_RegRD =1, ,MemtoReg_out = xxxx, MemWrite_out = 1, MemRead_out =0, R15_out =0,RegWrite_out =1, ALU_Result_out =1, ALU_Remainder_out = 0, movOp_out =xxxxxxxxxxxxxxxx,EXM_RegRD_out = 000x
+MEM: MemWrite: xxxx MemRead: 0 MemAddr_in 0 data_in: ff88 data_out:ff88 
+MWBBuffer: MemToReg_in: xxxxxxxxxxxxxxxx RegWrite_in: 1 ALU_Result: 1 ReadData: ff88 movOP_in: xxxx MemToReg_out: 1111111110001000 RegWriteOut: 1 ALU_Result_out: 1 ReadData_out: 1111111110001000 movOP_out x
+ X
+PC: reset = 0, addr_in = 2a, addr_out = 2a 
+ADDER: addr_in = 2a, constant = 02, addr_out = 2a,
+IM: Addr_in = 2a, Addr_out = xx, instruc_out = f880 
+IFIDBUFFER: instruc_in = f880, addr_in = 2a, ,instruc_out = f880, opcode = 1111, funct= 0000, addr_out = xx, offset = 100010000000 , IFID_Fop1 = 1000,IFID_Fop2 = 1000 
+Control: control = 1111, R15 = 0,ALUSrc= 1,MemToReg = 1,RegWrite = 1,MemRead = 1,MemWrite = 0, Branch = 0, ALUOP = 10 
+RegFile:  Instruc_in = f880, Writedata = xxxxxxxxxxxxxxxx Writereg =xxxx RegWrite = 1 reset = 0 op1 = ff88 op2 = ff88 Reg15 = 0000
+IDEX:IDEX_FLUSH =0, RD1 = ff88,RD2 = ff88, signExtendedR2 = 1111111111111000, funct_code_in =0000, IFID_RS = 8, IFID_RT =8 , R15_in = 0, ALUSrc_in = 1, MemToReg_in =1, RegWrite_in= 1, MemRead_in = 1, MemWrite_in = 0,Branch_in = 0, ALUOP_in =10,R15_out =0,ALUSrc_out = 1 ,MemToReg_out =1,RegWrite_out = 1,MemRead_out =1, MemWrite_out =0 , Branch_out =0,ALUOP_out = 10, RD1_out = ff88, RD2_out =ff88, signExtendedR2_out =1111111110000000, funct_code_out =0000, IFID_RS_OUT =8, IFID_RT_OUT = 8, opcode = 1111, opcode_out = 1111, addr_in = 2a, addr_out =xx 
+SignExtension toExtend: 1000 signExtend: 1111111111111000
+ALUControl funct: 0000 ALUop: 10  operation: 0001
+ LOOK AT ME Pplase ALU operation: 0001 op1: ff88 op2: ff88 result: ff10 remainder: 0000 overflow:x 
+EXMBuffer: ALU_Result = ff88, ALU_Remainder= ff10, movOP_in= 0000000000000000 , MemtoReg_in = x,MemWrite_in =1, MemRead_in = 0, R15_in =1,FLUSH_EX =0, RegWrite =0, IDEX_RegRD =1, ,MemtoReg_out = xxxx, MemWrite_out = 1, MemRead_out =0, R15_out =1,RegWrite_out =0, ALU_Result_out =1, ALU_Remainder_out = 0, movOp_out =xxxxxxxxxxxxxxxx,EXM_RegRD_out = 000x
+MEM: MemWrite: xxxx MemRead: 0 MemAddr_in 1 data_in: ff10 data_out:ff10 
+MWBBuffer: MemToReg_in: xxxxxxxxxxxxxxxx RegWrite_in: 1 ALU_Result: 1 ReadData: ff10 movOP_in: xxxx MemToReg_out: 1111111100010000 RegWriteOut: 1 ALU_Result_out: 1 ReadData_out: 1111111100010000 movOP_out x
+ X
+PC: reset = 0, addr_in = 2c, addr_out = 2c 
+ADDER: addr_in = 2c, constant = 02, addr_out = 2c,
+IM: Addr_in = 2c, Addr_out = xx, instruc_out = d892 
+IFIDBUFFER: instruc_in = d892, addr_in = 2c, ,instruc_out = d892, opcode = 1101, funct= 0010, addr_out = xx, offset = 100010010010 , IFID_Fop1 = 1000,IFID_Fop2 = 1001 
+Control: control = 1101, R15 = 1,ALUSrc= 0,MemToReg = 1,RegWrite = 1,MemRead = 0,MemWrite = 0, Branch = 0, ALUOP = 11 
+RegFile:  Instruc_in = d892, Writedata = xxxxxxxxxxxxxxxx Writereg =xxxx RegWrite = 1 reset = 0 op1 = ff88 op2 = 0000 Reg15 = 0000
+IDEX:IDEX_FLUSH =0, RD1 = ff88,RD2 = 0000, signExtendedR2 = 1111111111111001, funct_code_in =0010, IFID_RS = 8, IFID_RT =9 , R15_in = 1, ALUSrc_in = 0, MemToReg_in =1, RegWrite_in= 1, MemRead_in = 0, MemWrite_in = 0,Branch_in = 0, ALUOP_in =11,R15_out =1,ALUSrc_out = 0 ,MemToReg_out =1,RegWrite_out = 1,MemRead_out =0, MemWrite_out =0 , Branch_out =0,ALUOP_out = 11, RD1_out = ff88, RD2_out =0000, signExtendedR2_out =1111111111111001, funct_code_out =0010, IFID_RS_OUT =8, IFID_RT_OUT = 9, opcode = 1101, opcode_out = 1101, addr_in = 2c, addr_out =xx 
+SignExtension toExtend: 1001 signExtend: 1111111111111001
+ALUControl funct: 0010 ALUop: 11  operation: 0001
+ LOOK AT ME Pplase ALU operation: 0001 op1: ff88 op2: 0000 result: ff88 remainder: 0000 overflow:x 
+EXMBuffer: ALU_Result = ff88, ALU_Remainder= ff88, movOP_in= 0000000000000000 , MemtoReg_in = x,MemWrite_in =1, MemRead_in = 0, R15_in =0,FLUSH_EX =1, RegWrite =0, IDEX_RegRD =1, ,MemtoReg_out = xxxx, MemWrite_out = 1, MemRead_out =0, R15_out =0,RegWrite_out =1, ALU_Result_out =1, ALU_Remainder_out = 0, movOp_out =xxxxxxxxxxxxxxxx,EXM_RegRD_out = 000x
+MEM: MemWrite: xxxx MemRead: 0 MemAddr_in 0 data_in: ff88 data_out:ff88 
+MWBBuffer: MemToReg_in: 0000000000000000 RegWrite_in: 1 ALU_Result: 1 ReadData: ff88 movOP_in: 0000 MemToReg_out: 1111111110001000 RegWriteOut: 1 ALU_Result_out: 1 ReadData_out: 1111111110001000 movOP_out x
+ X
+PC: reset = 0, addr_in = 2e, addr_out = 2e 
+ADDER: addr_in = 2e, constant = 02, addr_out = 2e,
+IM: Addr_in = 2e, Addr_out = xx, instruc_out = ca92 
+IFIDBUFFER: instruc_in = ca92, addr_in = 2e, ,instruc_out = ca92, opcode = 1100, funct= 0010, addr_out = xx, offset = 101010010010 , IFID_Fop1 = 1010,IFID_Fop2 = 1001 
+Control: control = 1100, R15 = 0,ALUSrc= 1,MemToReg = 0,RegWrite = 0,MemRead = 0,MemWrite = 1, Branch = 0, ALUOP = 10 
+RegFile:  Instruc_in = ca92, Writedata = xxxxxxxxxxxxxxxx Writereg =xxxx RegWrite = 0 reset = 0 op1 = 0000 op2 = 0000 Reg15 = 0000
+IDEX:IDEX_FLUSH =0, RD1 = 0000,RD2 = 0000, signExtendedR2 = 1111111111111001, funct_code_in =0010, IFID_RS = a, IFID_RT =9 , R15_in = 0, ALUSrc_in = 1, MemToReg_in =0, RegWrite_in= 0, MemRead_in = 0, MemWrite_in = 1,Branch_in = 0, ALUOP_in =10,R15_out =0,ALUSrc_out = 1 ,MemToReg_out =0,RegWrite_out = 0,MemRead_out =0, MemWrite_out =1 , Branch_out =0,ALUOP_out = 10, RD1_out = 0000, RD2_out =0000, signExtendedR2_out =1111111111111001, funct_code_out =0010, IFID_RS_OUT =a, IFID_RT_OUT = 9, opcode = 1100, opcode_out = 1100, addr_in = 2e, addr_out =xx 
+SignExtension toExtend: 1001 signExtend: 1111111111111001
+ALUControl funct: 0010 ALUop: 10  operation: 0010
+ LOOK AT ME Pplase ALU operation: 0010 op1: 0000 op2: 0000 result: 0000 remainder: 0000 overflow:x 
+EXMBuffer: ALU_Result = 0000, ALU_Remainder= 0000, movOP_in= 0000000000000000 , MemtoReg_in = x,MemWrite_in =0, MemRead_in = 1, R15_in =0,FLUSH_EX =0, RegWrite =0, IDEX_RegRD =0, ,MemtoReg_out = xxxx, MemWrite_out = 0, MemRead_out =1, R15_out =0,RegWrite_out =0, ALU_Result_out =0, ALU_Remainder_out = 0, movOp_out =xxxxxxxxxxxxxxxx,EXM_RegRD_out = 000x
+MEM: MemWrite: xxxx MemRead: 1 MemAddr_in 0 data_in: 0000 data_out:0000 
+MWBBuffer: MemToReg_in: 0000000000000000 RegWrite_in: 0 ALU_Result: 0 ReadData: 0000 movOP_in: 0000 MemToReg_out: 0000000000000000 RegWriteOut: 0 ALU_Result_out: 0 ReadData_out: 0000000000000000 movOP_out x
+ X
+PC: reset = 0, addr_in = 30, addr_out = 30 
+ADDER: addr_in = 30, constant = 02, addr_out = 30,
+IM: Addr_in = 30, Addr_out = xx, instruc_out = fcc0 
+IFIDBUFFER: instruc_in = fcc0, addr_in = 30, ,instruc_out = fcc0, opcode = 1111, funct= 0000, addr_out = xx, offset = 110011000000 , IFID_Fop1 = 1100,IFID_Fop2 = 1100 
+Control: control = 1111, R15 = 0,ALUSrc= 1,MemToReg = 1,RegWrite = 1,MemRead = 1,MemWrite = 0, Branch = 0, ALUOP = 10 
+RegFile:  Instruc_in = fcc0, Writedata = xxxxxxxxxxxxxxxx Writereg =xxxx RegWrite = 1 reset = 0 op1 = cccc op2 = cccc Reg15 = 0000
+IDEX:IDEX_FLUSH =0, RD1 = cccc,RD2 = cccc, signExtendedR2 = 1111111111111100, funct_code_in =0000, IFID_RS = c, IFID_RT =c , R15_in = 0, ALUSrc_in = 1, MemToReg_in =1, RegWrite_in= 1, MemRead_in = 1, MemWrite_in = 0,Branch_in = 0, ALUOP_in =10,R15_out =0,ALUSrc_out = 1 ,MemToReg_out =1,RegWrite_out = 1,MemRead_out =1, MemWrite_out =0 , Branch_out =0,ALUOP_out = 10, RD1_out = cccc, RD2_out =cccc, signExtendedR2_out =1100110011001000, funct_code_out =0000, IFID_RS_OUT =c, IFID_RT_OUT = c, opcode = 1111, opcode_out = 1111, addr_in = 30, addr_out =xx 
+SignExtension toExtend: 1100 signExtend: 1111111111111100
+ALUControl funct: 0000 ALUop: 10  operation: 0001
+ LOOK AT ME Pplase ALU operation: 0001 op1: cccc op2: cccc result: 9998 remainder: 0000 overflow:x 
+EXMBuffer: ALU_Result = cccc, ALU_Remainder= 9998, movOP_in= 0000000000000000 , MemtoReg_in = x,MemWrite_in =1, MemRead_in = 0, R15_in =1,FLUSH_EX =0, RegWrite =0, IDEX_RegRD =1, ,MemtoReg_out = xxxx, MemWrite_out = 1, MemRead_out =0, R15_out =1,RegWrite_out =0, ALU_Result_out =1, ALU_Remainder_out = 0, movOp_out =xxxxxxxxxxxxxxxx,EXM_RegRD_out = 000x
+MEM: MemWrite: xxxx MemRead: 0 MemAddr_in 1 data_in: 9998 data_out:9998 
+MWBBuffer: MemToReg_in: 0000000000000000 RegWrite_in: 1 ALU_Result: 1 ReadData: 9998 movOP_in: 0000 MemToReg_out: 1001100110011000 RegWriteOut: 1 ALU_Result_out: 1 ReadData_out: 1001100110011000 movOP_out x
+ X
+PC: reset = 0, addr_in = 32, addr_out = 32 
+ADDER: addr_in = 32, constant = 02, addr_out = 32,
+IM: Addr_in = 32, Addr_out = xx, instruc_out = fdd1 
+IFIDBUFFER: instruc_in = fdd1, addr_in = 32, ,instruc_out = fdd1, opcode = 1111, funct= 0001, addr_out = xx, offset = 110111010001 , IFID_Fop1 = 1101,IFID_Fop2 = 1101 
+Control: control = 1111, R15 = 1,ALUSrc= 0,MemToReg = 1,RegWrite = 1,MemRead = 0,MemWrite = 0, Branch = 0, ALUOP = 11 
+RegFile:  Instruc_in = fdd1, Writedata = xxxxxxxxxxxxxxxx Writereg =xxxx RegWrite = 1 reset = 0 op1 = 0002 op2 = 0002 Reg15 = 0000
+IDEX:IDEX_FLUSH =0, RD1 = 0002,RD2 = 0002, signExtendedR2 = 1111111111111101, funct_code_in =0001, IFID_RS = d, IFID_RT =d , R15_in = 1, ALUSrc_in = 0, MemToReg_in =1, RegWrite_in= 1, MemRead_in = 0, MemWrite_in = 0,Branch_in = 0, ALUOP_in =11,R15_out =1,ALUSrc_out = 0 ,MemToReg_out =1,RegWrite_out = 1,MemRead_out =0, MemWrite_out =0 , Branch_out =0,ALUOP_out = 11, RD1_out = 0002, RD2_out =0002, signExtendedR2_out =1111111111111101, funct_code_out =0001, IFID_RS_OUT =d, IFID_RT_OUT = d, opcode = 1111, opcode_out = 1111, addr_in = 32, addr_out =xx 
+SignExtension toExtend: 1101 signExtend: 1111111111111101
+ALUControl funct: 0001 ALUop: 11  operation: 0001
+ LOOK AT ME Pplase ALU operation: 0001 op1: 0002 op2: 0002 result: 0004 remainder: 0000 overflow:x 
+EXMBuffer: ALU_Result = 0002, ALU_Remainder= 0004, movOP_in= 0000000000000000 , MemtoReg_in = x,MemWrite_in =1, MemRead_in = 0, R15_in =0,FLUSH_EX =1, RegWrite =0, IDEX_RegRD =1, ,MemtoReg_out = xxxx, MemWrite_out = 1, MemRead_out =0, R15_out =0,RegWrite_out =1, ALU_Result_out =1, ALU_Remainder_out = 0, movOp_out =xxxxxxxxxxxxxxxx,EXM_RegRD_out = 000x
+MEM: MemWrite: xxxx MemRead: 0 MemAddr_in 0 data_in: 0004 data_out:0004 
+MWBBuffer: MemToReg_in: 0000000000000000 RegWrite_in: 1 ALU_Result: 1 ReadData: 0004 movOP_in: 0000 MemToReg_out: 0000000000000100 RegWriteOut: 1 ALU_Result_out: 1 ReadData_out: 0000000000000100 movOP_out x
+ X
+PC: reset = 0, addr_in = 34, addr_out = 34 
+ADDER: addr_in = 34, constant = 02, addr_out = 34,
+IM: Addr_in = 34, Addr_out = xx, instruc_out = fcd0 
+IFIDBUFFER: instruc_in = fcd0, addr_in = 34, ,instruc_out = fcd0, opcode = 1111, funct= 0000, addr_out = xx, offset = 110011010000 , IFID_Fop1 = 1100,IFID_Fop2 = 1101 
+Control: control = 1111, R15 = 1,ALUSrc= 0,MemToReg = 1,RegWrite = 1,MemRead = 0,MemWrite = 0, Branch = 0, ALUOP = 11 
+RegFile:  Instruc_in = fcd0, Writedata = xxxxxxxxxxxxxxxx Writereg =xxxx RegWrite = 1 reset = 0 op1 = cccc op2 = 0002 Reg15 = 0000
+IDEX:IDEX_FLUSH =0, RD1 = cccc,RD2 = 0002, signExtendedR2 = 1111111111111101, funct_code_in =0000, IFID_RS = c, IFID_RT =d , R15_in = 1, ALUSrc_in = 0, MemToReg_in =1, RegWrite_in= 1, MemRead_in = 0, MemWrite_in = 0,Branch_in = 0, ALUOP_in =11,R15_out =1,ALUSrc_out = 0 ,MemToReg_out =1,RegWrite_out = 1,MemRead_out =0, MemWrite_out =0 , Branch_out =0,ALUOP_out = 11, RD1_out = cccc, RD2_out =0002, signExtendedR2_out =1111111111111101, funct_code_out =0000, IFID_RS_OUT =c, IFID_RT_OUT = d, opcode = 1111, opcode_out = 1111, addr_in = 34, addr_out =xx 
+SignExtension toExtend: 1101 signExtend: 1111111111111101
+ALUControl funct: 0000 ALUop: 11  operation: 0001
+ LOOK AT ME Pplase ALU operation: 0001 op1: cccc op2: 0002 result: ccce remainder: 0000 overflow:x 
+EXMBuffer: ALU_Result = cccc, ALU_Remainder= ccce, movOP_in= 0000000000000000 , MemtoReg_in = x,MemWrite_in =1, MemRead_in = 0, R15_in =0,FLUSH_EX =1, RegWrite =0, IDEX_RegRD =1, ,MemtoReg_out = xxxx, MemWrite_out = 1, MemRead_out =0, R15_out =0,RegWrite_out =1, ALU_Result_out =1, ALU_Remainder_out = 0, movOp_out =xxxxxxxxxxxxxxxx,EXM_RegRD_out = 000x
+MEM: MemWrite: xxxx MemRead: 0 MemAddr_in 0 data_in: ccce data_out:ccce 
+MWBBuffer: MemToReg_in: 0000000000000000 RegWrite_in: 1 ALU_Result: 1 ReadData: ccce movOP_in: 0000 MemToReg_out: 1100110011001110 RegWriteOut: 1 ALU_Result_out: 1 ReadData_out: 1100110011001110 movOP_out x
+ X
+PC: reset = 0, addr_in = 36, addr_out = 36 
+ADDER: addr_in = 36, constant = 02, addr_out = 36,
+IM: Addr_in = 36, Addr_out = xx, instruc_out = efff 
+IFIDBUFFER: instruc_in = efff, addr_in = 36, ,instruc_out = efff, opcode = 1110, funct= 1111, addr_out = xx, offset = 111111111111 , IFID_Fop1 = 1111,IFID_Fop2 = 1111 
+Control: control = 1110, R15 = 1,ALUSrc= 0,MemToReg = 1,RegWrite = 1,MemRead = 0,MemWrite = 0, Branch = 0, ALUOP = 11 
+RegFile:  Instruc_in = efff, Writedata = xxxxxxxxxxxxxxxx Writereg =xxxx RegWrite = 1 reset = 0 op1 = 0000 op2 = 0000 Reg15 = 0000
+IDEX:IDEX_FLUSH =0, RD1 = 0000,RD2 = 0000, signExtendedR2 = 1111111111111111, funct_code_in =1111, IFID_RS = f, IFID_RT =f , R15_in = 1, ALUSrc_in = 0, MemToReg_in =1, RegWrite_in= 1, MemRead_in = 0, MemWrite_in = 0,Branch_in = 0, ALUOP_in =11,R15_out =1,ALUSrc_out = 0 ,MemToReg_out =1,RegWrite_out = 1,MemRead_out =0, MemWrite_out =0 , Branch_out =0,ALUOP_out = 11, RD1_out = 0000, RD2_out =0000, signExtendedR2_out =1111111111111111, funct_code_out =1111, IFID_RS_OUT =f, IFID_RT_OUT = f, opcode = 1110, opcode_out = 1110, addr_in = 36, addr_out =xx 
+SignExtension toExtend: 1111 signExtend: 1111111111111111
+ALUControl funct: 1111 ALUop: 11  operation: 0001
+ LOOK AT ME Pplase ALU operation: 0001 op1: 0000 op2: 0000 result: 0000 remainder: 0000 overflow:x 
+EXMBuffer: ALU_Result = 0000, ALU_Remainder= 0000, movOP_in= 0000000000000000 , MemtoReg_in = x,MemWrite_in =1, MemRead_in = 0, R15_in =0,FLUSH_EX =1, RegWrite =0, IDEX_RegRD =1, ,MemtoReg_out = xxxx, MemWrite_out = 1, MemRead_out =0, R15_out =0,RegWrite_out =1, ALU_Result_out =1, ALU_Remainder_out = 0, movOp_out =xxxxxxxxxxxxxxxx,EXM_RegRD_out = 000x
+MEM: MemWrite: xxxx MemRead: 0 MemAddr_in 0 data_in: 0000 data_out:0000 
+MWBBuffer: MemToReg_in: 0000000000000000 RegWrite_in: 1 ALU_Result: 1 ReadData: 0000 movOP_in: 0000 MemToReg_out: 0000000000000000 RegWriteOut: 1 ALU_Result_out: 1 ReadData_out: 0000000000000000 movOP_out x
+ X
+PC: reset = 0, addr_in = 38, addr_out = 38 
+ADDER: addr_in = 38, constant = 02, addr_out = 38,
+IM: Addr_in = 38, Addr_out = xx, instruc_out = 0000 
+IFIDBUFFER: instruc_in = 0000, addr_in = 38, ,instruc_out = 0000, opcode = 0000, funct= 0000, addr_out = xx, offset = 000000000000 , IFID_Fop1 = 0000,IFID_Fop2 = 0000 
+Control: control = 0000, R15 = 1,ALUSrc= 0,MemToReg = 1,RegWrite = 1,MemRead = 0,MemWrite = 0, Branch = 0, ALUOP = 11 
+RegFile:  Instruc_in = 0000, Writedata = xxxxxxxxxxxxxxxx Writereg =xxxx RegWrite = 1 reset = 0 op1 = xxxx op2 = xxxx Reg15 = 0000
+IDEX:IDEX_FLUSH =0, RD1 = xxxx,RD2 = xxxx, signExtendedR2 = 0000000000000000, funct_code_in =0000, IFID_RS = 0, IFID_RT =0 , R15_in = 1, ALUSrc_in = 0, MemToReg_in =1, RegWrite_in= 1, MemRead_in = 0, MemWrite_in = 0,Branch_in = 0, ALUOP_in =11,R15_out =1,ALUSrc_out = 0 ,MemToReg_out =1,RegWrite_out = 1,MemRead_out =0, MemWrite_out =0 , Branch_out =0,ALUOP_out = 11, RD1_out = xxxx, RD2_out =xxxx, signExtendedR2_out =0000000000000000, funct_code_out =0000, IFID_RS_OUT =0, IFID_RT_OUT = 0, opcode = 0000, opcode_out = 0000, addr_in = 38, addr_out =xx 
+SignExtension toExtend: 0000 signExtend: 0000000000000000
+ALUControl funct: 0000 ALUop: 11  operation: 0001
+ LOOK AT ME Pplase ALU operation: 0001 op1: xxxx op2: xxxx result: xxxx remainder: 0000 overflow:x 
+EXMBuffer: ALU_Result = xxxx, ALU_Remainder= xxxx, movOP_in= 0000000000000000 , MemtoReg_in = x,MemWrite_in =1, MemRead_in = 0, R15_in =0,FLUSH_EX =1, RegWrite =0, IDEX_RegRD =1, ,MemtoReg_out = xxxx, MemWrite_out = 1, MemRead_out =0, R15_out =0,RegWrite_out =1, ALU_Result_out =1, ALU_Remainder_out = x, movOp_out =xxxxxxxxxxxxxxxx,EXM_RegRD_out = 000x
+MEM: MemWrite: xxxx MemRead: 0 MemAddr_in 0 data_in: xxxx data_out:xxxx 
+MWBBuffer: MemToReg_in: 0000000000000000 RegWrite_in: 1 ALU_Result: 1 ReadData: xxxx movOP_in: 0000 MemToReg_out: xxxxxxxxxxxxxxxx RegWriteOut: 1 ALU_Result_out: 1 ReadData_out: xxxxxxxxxxxxxxxx movOP_out x
+ X
+$finish called from file "cpu_fixture.v", line 17.
+$finish at simulation time                  580
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 580
+CPU Time:      0.340 seconds;       Data structure size:   0.0Mb
+Tue Dec  5 08:44:53 2017

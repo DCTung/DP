@@ -1,0 +1,39 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Dec  4 17:57 2017
+                   0
+ Input:
+ Read1: xxxx,  RD15: xxxx opcode: xxxx Branch: x
+Output:
+ PCSRC: x
+
+                   5
+ Input:
+ Read1: 0005,  RD15: 000f opcode: 0101 Branch: 1
+Output:
+ PCSRC: 0
+
+                  10
+ Input:
+ Read1: 0005,  RD15: 000f opcode: 0100 Branch: 1
+Output:
+ PCSRC: 0
+
+                  15
+ Input:
+ Read1: 0005,  RD15: 000f opcode: 0101 Branch: 0
+Output:
+ PCSRC: 1
+
+                  20
+ Input:
+ Read1: 0005,  RD15: 000f opcode: 0100 Branch: 0
+Output:
+ PCSRC: 1
+
+$finish called from file "branchLogic_fixture.v", line 20.
+$finish at simulation time                  420
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 420
+CPU Time:      0.230 seconds;       Data structure size:   0.0Mb
+Mon Dec  4 17:57:05 2017
