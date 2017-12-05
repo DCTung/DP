@@ -6,9 +6,9 @@ module MUX_FB_fixture;
   wire [15:0] MUXFB_out;
 
 initial
-  $monitor("\n ForwardB: %b  IDEX_op2: %h  EM_op2: %h  MWB_op2:  %h\n MUX_BA_out: %h", ForwardB,IDEX_op2, EM_op2, MWB_op2, MUXFB_out);
+  $monitor("ForwardB: %b  IDEX_op2: %h  EM_op2: %h  MWB_op2:  %h\n MUX_BA_out: %h", ForwardB,IDEX_op2, EM_op2, MWB_op2, MUXFB_out);
 
-  MUX_BA MBAF(ForwardB, IDEX_op2, EM_op2, MWB_op2, MUXFB_out);
+  MUX_FB MBFB(ForwardB, IDEX_op2, EM_op2, MWB_op2, MUXFB_out);
   initial begin
     #5 ForwardB = 00;  IDEX_op2 = 13; EM_op2 = 10; MWB_op2 = 6;
     #5 ForwardB = 10;  IDEX_op2 = 13; EM_op2 = 10; MWB_op2 = 6;
