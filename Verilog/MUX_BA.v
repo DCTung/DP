@@ -1,18 +1,18 @@
-module MUX_FA(
-  input [1:0] ForwardA,
+module MUX_BA(
+  input [1:0] ForwardB,
   input [15:0] IDEX_op1, EM_op1, MWB_op1,
-  output reg [15:0] MUXFA_out
+  output reg [15:0] MUXFB_out
   );
 
   always@(*)
   begin
-    case(ForwardA)
+    case(ForwardB)
       2'b00:
-        MUXFA_out =IDEX_op1;
+        MUXFB_out =IDEX_op1;
       2'b10:
-        MUXFA_out = EM_op1;
+        MUXFB_out = EM_op1;
       2'b01:
-        MUXFA_out =MWB_op1;
+        MUXFB_out =MWB_op1;
     endcase
   end
 endmodule
