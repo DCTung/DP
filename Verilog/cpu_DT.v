@@ -47,12 +47,12 @@ wire [15:0] op1, op2, Reg15;
 //IDEX_buffer
 reg IDEX_FLUSH = 0;
 reg [15:0] signExtendedR2;
-reg [15:0] IFID_RS, IFID_RT;
+reg [3:0] IFID_RS, IFID_RT;
 wire R15_out, ALUSrc_out, MemToReg_out, RegWrite_out, MemRead_out, MemWrite_out, Branch_out;
 wire [1:0] ALUOP_out;
 wire [15:0] RD1_out, RD2_out, signExtendedR2_out;
 wire [3:0] funct_code_out;
-wire [15:0] IFID_RS_OUT, IFID_RT_OUT;
+wire [3:0] IFID_RS_OUT, IFID_RT_OUT;
 
 //ALUcontrol
 wire [3:0] operation;

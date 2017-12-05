@@ -7,7 +7,7 @@
   input [3:0] funct_code_in, //funky code ;)
 
   //forwarded IN
-  input [15:0] IFID_RS, IFID_RT,
+  input [3:0] IFID_RS, IFID_RT,
 
   //Cunit ins
   input R15_in, ALUSrc_in, MemToReg_in, RegWrite_in, MemRead_in, MemWrite_in, Branch_in,
@@ -29,7 +29,7 @@
   output reg [3:0] funct_code_out,
 
   //forwarded Out
-  output reg [15:0] IFID_RS_OUT, IFID_RT_OUT);
+  output reg [3:0] IFID_RS_OUT, IFID_RT_OUT);
 
 //i think that's all :)
 
