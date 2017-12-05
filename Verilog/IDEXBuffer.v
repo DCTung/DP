@@ -4,7 +4,9 @@
   //from RF
   input [15:0] RD1, RD2,
   input [15:0] signExtendedR2,
-  input [3:0] funct_code_in, //funky code ;)
+  input [3:0] funct_code_in, opcode, //funky code ;)
+
+  input [7:0] addr_in,
 
   //forwarded IN
   input [3:0] IFID_RS, IFID_RT,
@@ -22,11 +24,12 @@
   output reg MemWrite_out,
   output reg Branch_out,
   output reg [1:0] ALUOP_out,
+  output reg [7:0] addr_out,
 
   //RF outs
   output reg [15:0] RD1_out, RD2_out,
   output reg [15:0] signExtendedR2_out,
-  output reg [3:0] funct_code_out,
+  output reg [3:0] funct_code_out, opcode_out,
 
   //forwarded Out
   output reg [3:0] IFID_RS_OUT, IFID_RT_OUT);
