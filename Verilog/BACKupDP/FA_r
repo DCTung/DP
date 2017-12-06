@@ -1,0 +1,17 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Dec  5 20:41 2017
+ForwardA: xx  IDEX_op1: xxxx  EM_op1: xxxx  MWB_op1:  xxxx
+ MUX_BA_out: xxxx
+ForwardA: 00  IDEX_op1: 000d  EM_op1: 000a  MWB_op1:  0006
+ MUX_BA_out: 000d
+ForwardA: 10  IDEX_op1: 000d  EM_op1: 000a  MWB_op1:  0006
+ MUX_BA_out: 000a
+ForwardA: 01  IDEX_op1: 000d  EM_op1: 000a  MWB_op1:  0006
+ MUX_BA_out: 0006
+$finish called from file "MUX_FA_fixture.v", line 19.
+$finish at simulation time                  420
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 420
+CPU Time:      0.550 seconds;       Data structure size:   0.0Mb
+Tue Dec  5 20:41:26 2017

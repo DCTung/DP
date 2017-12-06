@@ -1,0 +1,15 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Dec  5 20:44 2017
+                   0 addr_in = 00, addr_out = zz, instr = 00xx
+                  20 addr_in = 02, addr_out = zz, instr = 00xx
+                  40 addr_in = 04, addr_out = zz, instr = 00xx
+                  60 addr_in = 0a, addr_out = zz, instr = 00xx
+                  80 addr_in = 36, addr_out = zz, instr = 00xx
+                 100 addr_in = 38, addr_out = zz, instr = 00xx
+$finish called from file "IM_fixture.v", line 20.
+$finish at simulation time                  200
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 200
+CPU Time:      0.540 seconds;       Data structure size:   0.0Mb
+Tue Dec  5 20:44:37 2017

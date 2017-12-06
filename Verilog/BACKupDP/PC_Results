@@ -1,24 +1,17 @@
 Chronologic VCS simulator copyright 1991-2014
 Contains Synopsys proprietary information.
-Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Nov 29 13:06 2017
-                   0 reset = 1, addr_in = xx, addr_out = xx 
-                  10 reset = 1, addr_in = xx, addr_out = 00 
-                  20 reset = 0, addr_in = 01, addr_out = 01 
-                  40 reset = 0, addr_in = ff, addr_out = 01 
-                  50 reset = 0, addr_in = ff, addr_out = ff 
-                  60 reset = 0, addr_in = f0, addr_out = ff 
-                  70 reset = 0, addr_in = f0, addr_out = f0 
-                  80 reset = 0, addr_in = 0f, addr_out = f0 
-                  90 reset = 0, addr_in = 0f, addr_out = 0f 
-                 100 reset = 0, addr_in = 07, addr_out = 0f 
-                 110 reset = 0, addr_in = 07, addr_out = 07 
-                 120 reset = 0, addr_in = 0a, addr_out = 07 
-                 130 reset = 0, addr_in = 0a, addr_out = 0a 
-                 140 reset = 1, addr_in = 0c, addr_out = 0a 
-                 150 reset = 1, addr_in = 0c, addr_out = 00 
-$finish called from file "PC_fixture.v", line 30.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Dec  5 20:33 2017
+                   0 addr_in = xx, addr_out = xx 
+                  20 addr_in = 01, addr_out = 01 
+                  40 addr_in = ff, addr_out = ff 
+                  60 addr_in = f0, addr_out = f0 
+                  80 addr_in = 0f, addr_out = 0f 
+                 100 addr_in = 07, addr_out = 07 
+                 120 addr_in = 0a, addr_out = 0a 
+                 140 addr_in = 0c, addr_out = 0c 
+$finish called from file "PC_fixture.v", line 22.
 $finish at simulation time                  200
            V C S   S i m u l a t i o n   R e p o r t 
 Time: 200
-CPU Time:      0.330 seconds;       Data structure size:   0.0Mb
-Wed Nov 29 13:06:52 2017
+CPU Time:      0.550 seconds;       Data structure size:   0.0Mb
+Tue Dec  5 20:33:40 2017

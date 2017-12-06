@@ -1,0 +1,15 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Dec  5 20:38 2017
+PCSRC = 1, PCAdderAddr = 0f, BranchAddr = f0, muxPCOut = 01
+PCSRC = 0, PCAdderAddr = 0f, BranchAddr = f0, muxPCOut = 00
+PCSRC = 1, PCAdderAddr = 55, BranchAddr = 44, muxPCOut = 01
+PCSRC = 0, PCAdderAddr = 55, BranchAddr = 44, muxPCOut = 00
+PCSRC = 1, PCAdderAddr = 00, BranchAddr = ff, muxPCOut = 00
+PCSRC = 0, PCAdderAddr = 00, BranchAddr = ff, muxPCOut = 00
+$finish called from file "muxPC_fixture.v", line 22.
+$finish at simulation time                   70
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 70
+CPU Time:      0.550 seconds;       Data structure size:   0.0Mb
+Tue Dec  5 20:38:17 2017

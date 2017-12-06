@@ -15,7 +15,7 @@ initial
     #5 ForwardA = 01;  IDEX_op1 = 13; EM_op1 = 10; MWB_op1 = 6;
   end
 
-  initial Aegin
+  initial begin
     #420 $finish;
   end
 endmodule

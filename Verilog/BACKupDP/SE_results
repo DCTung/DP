@@ -1,0 +1,22 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Dec  5 20:31 2017
+                   0
+ Input toExtend: xxxx
+ Output Sign Extended: xxxxxxxxxxxxxxxx
+                   5
+ Input toExtend: 1101
+ Output Sign Extended: 1111111111111101
+                  10
+ Input toExtend: 0010
+ Output Sign Extended: 0000000000000010
+                  15
+ Input toExtend: 1000
+ Output Sign Extended: 1111111111111000
+                  20
+ Input toExtend: 0001
+ Output Sign Extended: 0000000000000001
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 20
+CPU Time:      0.550 seconds;       Data structure size:   0.0Mb
+Tue Dec  5 20:31:06 2017

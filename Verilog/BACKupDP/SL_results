@@ -1,0 +1,33 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Dec  5 20:31 2017
+                   0
+ Input: 
+signExtendedR2 = xxxx 
+ Output: 
+ shiftedOut = xxxx
+
+                   5
+ Input: 
+signExtendedR2 = 0005 
+ Output: 
+ shiftedOut = 000a
+
+                  10
+ Input: 
+signExtendedR2 = 0013 
+ Output: 
+ shiftedOut = 0026
+
+                  15
+ Input: 
+signExtendedR2 = 0007 
+ Output: 
+ shiftedOut = 000e
+
+$finish called from file "shiftLeft_fixture.v", line 18.
+$finish at simulation time                  420
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 420
+CPU Time:      0.500 seconds;       Data structure size:   0.0Mb
+Tue Dec  5 20:31:22 2017
