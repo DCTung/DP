@@ -6,6 +6,8 @@ add.addr_out, BLadder.BL_result, HD.PCWrite, muxPCOut
 
 
 
+
+
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ IDK WHAT U NEED FORM HERE
 initial $monitor("\nSignExtension toExtend: %h signExtend: %h\nALUControl funct: %h ALUop: %h  operation: %h",
 IFID.instruc_out, signExtended, IDEX.funct_code_out, IDEX.ALUOP_out, operation
