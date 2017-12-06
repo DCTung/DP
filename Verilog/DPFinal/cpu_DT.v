@@ -20,6 +20,16 @@
 `include "shiftLeft.v"
 `include "WBMux.v"
 
+/*
+mux include
+`include "MUX_aluop2.v"
+`include "MUX_FA.v"
+`include "MUX_FB.v"
+`include "mux2to1.v"
+`include "muxSelector.v"
+`include "muxPC.v"
+*/
+
 module cpu(input clk, reset);
 //PC signals
 reg [7:0] addr_in = 8'h00;
