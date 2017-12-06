@@ -1,7 +1,7 @@
+//muxPC				PCMUX(.PCAdderAddr(add.addr_out), .BranchAddr(BLadder.BL_result), .PCSRC(HD.PCWrite),.muxPCOut(muxPCOut));
 
 
-
-
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ IDK WHAT U NEED FORM HERE
 initial $monitor("\nSignExtension toExtend: %h signExtend: %h\nALUControl funct: %h ALUop: %h  operation: %h",
 IFID.instruc_out, signExtended, IDEX.funct_code_out, IDEX.ALUOP_out, operation);
 //SignExtension signExtend(.toExtend(IFID.instruc_out), .signExtended(signExtended));

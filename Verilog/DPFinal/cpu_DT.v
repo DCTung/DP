@@ -103,7 +103,9 @@ wire PCSRC;
 wire [15:0] shiftedOut;
 wire [15:0] BL_result;
 
+//muxStuff
 
+			//muxPC				PCMUX(.PCAdderAddr(add.addr_out), .BranchAddr(BLadder.BL_result), .PCSRC(HD.PCWrite),.muxPCOut(muxPCOut));
 			adder         add1(.clk(clk), .reset(reset), .addr_in(pc1.addr_out), .constant(constant), .addr_out(addr_out));
 			PC             pc1(.addr_in(add1.addr_out), .addr_out(addr_out));
 			IM             im1(.reset(reset), .addr_in(pc1.addr_out), .addr_out(addr_out), .instruc_out(instruc_out));
