@@ -25,8 +25,8 @@ mux include
 `include "MUX_aluop2.v"
 `include "MUX_FA.v"
 `include "MUX_FB.v"
-`include "mux2to1.v"
-`include "muxSelector.v"
+
+`include "mux2to1.v" COVERED BY MUXPC
 `include "muxPC.v"
 */
 
@@ -115,11 +115,11 @@ wire [15:0] BL_result;
 
 			RegFile		r1(.instruc_in(IFID.instruc_out), .Writedata(WBmux.WriteData), .Writereg(Writereg), .RegWrite(c1.RegWrite), .reset(reset), .op1(op1), .op2(op2), .Reg15(Reg15));
 
-			//dk if we can just grab like this
 			SignExtension signExtend(.toExtend(IFID.IFID_Fop2), .signExtended(signExtended));
 
 			IDEXBuffer    IDEX(.IDEX_FLUSH(IDEX_FLUSH), .RD1(r1.op1), .RD2(r1.op2), .signExtendedR2(signExtend.signExtended), .funct_code_in(IFID.funct), .IFID_RS(IFID.IFID_Fop1), .IFID_RT(IFID.IFID_Fop2), .R15_in(c1.R15), .ALUSrc_in(c1.ALUSrc), .MemToReg_in(c1.MemToReg), .RegWrite_in(c1.RegWrite), .MemRead_in(c1.MemRead), .MemWrite_in(c1.MemWrite), .Branch_in(c1.Branch), .ALUOP_in(c1.ALUOP), .R15_out(R15_out), .ALUSrc_out(ALUSrc_out), .MemToReg_out(MemToReg_out), .RegWrite_out(RegWrite_out), .MemRead_out(MemRead_out), .MemWrite_out(MemWrite_out), .Branch_out(Branch_out), .ALUOP_out(ALUOP_out), .RD1_out(RD1_out), .RD2_out(RD2_out), .signExtendedR2_out(signExtendedR2_out), .funct_code_out(funct_code_out), .IFID_RS_OUT(IFID_RS_OUT), .IFID_RT_OUT(IFID_RT_OUT), .opcode(IFID.opcode), .opcode_out(opcode), .addr_in(IFID.addr_out), .addr_out(addr_out));
-
+			//ForwardingUnit FwdU(.EM_RD(EXMem.EXM_RegRD_out), MWB_RD(Mwb.))
+			//MUX_FA			muxFA(.Forward())
 			ALUcontrol     ac1(.clk(clk), .reset(reset), .funct(IDEX.funct_code_out), .ALUop(IDEX.ALUOP_out), .operation(operation));
 
 			ALU		a1(.operation(ac1.operation), .op1(IDEX.RD1_out), .op2(IDEX.RD2_out), .result(result), .remainder(remainder), .o(o));

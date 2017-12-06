@@ -5,8 +5,8 @@
   input [15:0] RD1, RD2,
   input [15:0] signExtendedR2,
   input [3:0] funct_code_in, opcode, //funky code ;)
- 
-  input[7:0]  addr_in, 
+
+  input[7:0]  addr_in,
   //forwarded IN
   input [3:0] IFID_RS, IFID_RT,
 
