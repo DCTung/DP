@@ -118,8 +118,9 @@ wire [15:0] BL_result;
 			SignExtension signExtend(.toExtend(IFID.IFID_Fop2), .signExtended(signExtended));
 
 			IDEXBuffer    IDEX(.IDEX_FLUSH(IDEX_FLUSH), .RD1(r1.op1), .RD2(r1.op2), .signExtendedR2(signExtend.signExtended), .funct_code_in(IFID.funct), .IFID_RS(IFID.IFID_Fop1), .IFID_RT(IFID.IFID_Fop2), .R15_in(c1.R15), .ALUSrc_in(c1.ALUSrc), .MemToReg_in(c1.MemToReg), .RegWrite_in(c1.RegWrite), .MemRead_in(c1.MemRead), .MemWrite_in(c1.MemWrite), .Branch_in(c1.Branch), .ALUOP_in(c1.ALUOP), .R15_out(R15_out), .ALUSrc_out(ALUSrc_out), .MemToReg_out(MemToReg_out), .RegWrite_out(RegWrite_out), .MemRead_out(MemRead_out), .MemWrite_out(MemWrite_out), .Branch_out(Branch_out), .ALUOP_out(ALUOP_out), .RD1_out(RD1_out), .RD2_out(RD2_out), .signExtendedR2_out(signExtendedR2_out), .funct_code_out(funct_code_out), .IFID_RS_OUT(IFID_RS_OUT), .IFID_RT_OUT(IFID_RT_OUT), .opcode(IFID.opcode), .opcode_out(opcode), .addr_in(IFID.addr_out), .addr_out(addr_out));
-			//ForwardingUnit FwdU(.EM_RD(EXMem.EXM_RegRD_out), MWB_RD(Mwb.))
-			//MUX_FA			muxFA(.Forward())
+			//ForwardingUnit FwdU(.EM_RD(EXMem.EXM_RegRD_out), MWB_RD(Mwb.MWB_RS), .ID_OP1(IDEX.IFID_RS_OUT), .ID_OP2(IFID_RT_OUT), .EM_RegWrite(EXMem.RegWrite_out), .MWB_RegWrite(Mwb.RegWrite_out), .ForwardA(ForwardA),.ForwardB(ForwardB));
+
+			//MUX_FA			muxFA(.ForwardA(FwdU.ForwardA), .IDEX_op1(IDEX.RD1), .EM_op1(EXMem.ALU_Result), .MWB_op1(Mwb.ReadData_out), .MUXFA_out(MUXFA_out)
 			ALUcontrol     ac1(.clk(clk), .reset(reset), .funct(IDEX.funct_code_out), .ALUop(IDEX.ALUOP_out), .operation(operation));
 
 			ALU		a1(.operation(ac1.operation), .op1(IDEX.RD1_out), .op2(IDEX.RD2_out), .result(result), .remainder(remainder), .o(o));
@@ -127,7 +128,7 @@ wire [15:0] BL_result;
 
 			mem		m1(.clk(clk), .reset(reset), .MemWrite(EXMem.MemWrite_out), .MemRead(EXMem.MemRead_out), .Memaddr_in(EXMem.EXM_RegRD_out), .data_in(EXMem.ALU_Result_out), .data_out(data_out));
 
-			MWBBuffer      Mwb(.MemToReg_in(EXMem.MemtoReg_out), .RegWrite_in(EXMem.RegWrite_out), .ALU_Result(EXMBuffer.ALU_Result_out), .ReadData(m1.data_out), .movOP_in(EXMem.movOp_out), .MemToReg_out(MemToReg_out), .RegWrite_out(RegWrite_out), .ALU_Result_out(ALU_Result_out), .ReadData_out(ReadData_out), .movOP_out(movOp_out));
+			MWBBuffer      Mwb(.MemToReg_in(EXMem.MemtoReg_out), .RegWrite_in(EXMem.RegWrite_out), .ALU_Result(EXMBuffer.ALU_Result_out), .ReadData(m1.data_out), .movOP_in(EXMem.movOp_out), .MemToReg_out(MemToReg_out), .RegWrite_out(RegWrite_out), .ALU_Result_out(ALU_Result_out), .ReadData_out(ReadData_out), .movOP_out(movOp_out), .EXM_RS(EXMem.EXM_RegRD_out),.EXM_RT(EXMem.EXM_RegRT_out), .MWB_RS(MWB_RS),.MWB_RT(MWB_RT));
 			WBMux    WBmux( .MemToReg(Mwb.MemToReg_out), .ALUResult(Mwb.ALU_Result_out), .MReadData(Mwb.ReadData_out), .WriteData(Writedata));
 			/*ForwardingUnit FU(.EM_RD(EXMem.op1), .MWB_RD(Mwb.ReadData), .ID_OP1(IDEX.RD1), .ID_OP2(IDEX.RD2), .EM_RegWrite(EXMem.MemtoReg_out), .MWB_RegWrite(Mwb.RegWrite_out), .ForwardA(ForwardA) ,.ForwardB(ForwardB));
 
