@@ -123,7 +123,7 @@ wire [15:0] BL_result;
 			ALUcontrol     ac1(.clk(clk), .reset(reset), .funct(IDEX.funct_code_out), .ALUop(IDEX.ALUOP_out), .operation(operation));
 
 			ALU		a1(.operation(ac1.operation), .op1(IDEX.RD1_out), .op2(IDEX.RD2_out), .result(result), .remainder(remainder), .o(o));
-			EXMBuffer    EXMem( .ALU_Result(a1.result), .ALU_Remainder(a1.remainder), .movOP_in(IDEX.IFID_RT_OUT), .MemtoReg_in(IDEX.MemToReg_out), .MemWrite_in(IDEX.MemWrite_out), .MemRead_in(IDEX.MemRead_out), .R15_in(IDEX.R15_out), .FLUSH_EX(IDEX_FLUSH), .RegWrite(IDEX.RegWrite_out), .IDEX_RegRD(IDEX_RegRD), .MemtoReg_out(MemToReg_out), .MemWrite_out(MemWrite_out), .MemRead_out(MemRead_out), .R15_out(R15_out), .RegWrite_out(RegWrite_out), .ALU_Result_out(ALU_Result_out), .ALU_Remainder_out(ALU_Remainder_out), .movOp_out(movOp_out), .EXM_RegRD_out(EXM_RegRD_out));
+			EXMBuffer    EXMem( .ALU_Result(a1.result), .ALU_Remainder(a1.remainder), .movOP_in(IDEX.IFID_RT_OUT), .MemtoReg_in(IDEX.MemToReg_out), .MemWrite_in(IDEX.MemWrite_out), .MemRead_in(IDEX.MemRead_out), .R15_in(IDEX.R15_out), .FLUSH_EX(IDEX_FLUSH), .RegWrite(IDEX.RegWrite_out), .IDEX_RegRD(IDEX.IFID_RS_OUT),.IDEX_RegRT(IDEX.IFID_RT_OUT), .MemtoReg_out(MemToReg_out), .MemWrite_out(MemWrite_out), .MemRead_out(MemRead_out), .R15_out(R15_out), .RegWrite_out(RegWrite_out), .ALU_Result_out(ALU_Result_out), .ALU_Remainder_out(ALU_Remainder_out), .movOp_out(movOp_out), .EXM_RegRD_out(EXM_RegRD_out), .EXM_RegRT_out(EXM_RegRT_out));
 
 			mem		m1(.clk(clk), .reset(reset), .MemWrite(EXMem.MemWrite_out), .MemRead(EXMem.MemRead_out), .Memaddr_in(EXMem.EXM_RegRD_out), .data_in(EXMem.ALU_Result_out), .data_out(data_out));
 

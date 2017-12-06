@@ -8,11 +8,11 @@ module EXMBuffer(
   //forwarding
   //in <- muxed RT/RD page 311 out are EX/MREGRD
 
-  input [3:0] IDEX_RegRD,
+  input [3:0] IDEX_RegRD, IDEX_RegRT,
   output reg MemtoReg_out, MemWrite_out, MemRead_out, R15_out, RegWrite_out,
   output reg [15:0] ALU_Result_out, ALU_Remainder_out,
   output reg [3:0] movOp_out,
-  output reg [3:0] EXM_RegRD_out
+  output reg [3:0] EXM_RegRD_out,EXM_RegRT_out
   );
 
 
@@ -44,6 +44,7 @@ module EXMBuffer(
     ALU_Remainder_out = ALU_Remainder_out;
     movOp_out = movOP_in;
     EXM_RegRD_out = IDEX_RegRD;
+    EXM_RegRT_out = IDEX_RegRT;
     end
   else
     begin
