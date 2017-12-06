@@ -5,8 +5,8 @@
   input [15:0] RD1, RD2,
   input [15:0] signExtendedR2,
   input [3:0] funct_code_in, opcode, //funky code ;)
- 
-  input[7:0]  addr_in, 
+
+  input[7:0]  addr_in,
   //forwarded IN
   input [3:0] IFID_RS, IFID_RT,
 
@@ -52,6 +52,7 @@ always@(*)
     IFID_RS_OUT = IFID_RS;
     IFID_RT_OUT = IFID_RT;
     opcode_out = opcode;
+    addr_out = addr_in;
 
     //if ALUSrc_in = 1 then signextended taken -- for Type C?
     //@@@@@@@need a Type D condition
@@ -79,5 +80,6 @@ always@(*)
       IFID_RS_OUT = 0;
       IFID_RT_OUT = 0;
     opcode_out = 0;
+      addr_out = 0;
     end
   endmodule

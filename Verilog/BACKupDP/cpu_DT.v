@@ -97,7 +97,7 @@ wire STALL,PCWrite,IFID_Write;
 //branch stuff
 wire PCSRC;
 wire [15:0] shiftedOut;
-wire [15:0] BL_result;
+wire [7:0] BL_result;
 
 //muxStuff
 
@@ -125,7 +125,6 @@ MUX_FA			muxFA(.ForwardA(FwdU.ForwardA), .IDEX_op1(IDEX.RD1), .EM_op1(EXMem.ALU_
 			ALUcontrol     ac1(.clk(clk), .reset(reset), .funct(IDEX.funct_code_out), .ALUop(IDEX.ALUOP_out), .operation(operation));
 
 			ALU		a1(.operation(ac1.operation), .op1(IDEX.RD1_out), .op2(IDEX.RD2_out), .result(result), .remainder(remainder), .o(o));
-			/*EXMBuffer    EXMem( .ALU_Result(a1.result), .ALU_Remainder(a1.remainder), .movOP_in(IDEX.IFID_RT_OUT), .MemtoReg_in(IDEX.MemToReg_out), .MemWrite_in(IDEX.MemWrite_out), .MemRead_in(IDEX.MemRead_out), .R15_in(IDEX.R15_out), .FLUSH_EX(IDEX_FLUSH), .RegWrite(IDEX.RegWrite_out), .IDEX_RegRD(IDEX_RegRD), .MemtoReg_out(MemToReg_out), .MemWrite_out(MemWrite_out), .MemRead_out(MemRead_out), .R15_out(R15_out), .RegWrite_out(RegWrite_out), .ALU_Result_out(ALU_Result_out), .ALU_Remainder_out(ALU_Remainder_out), .movOp_out(movOp_out), .EXM_RegRD_out(EXM_RegRD_out));*/
 
 			mem		m1(.clk(clk), .reset(reset), .MemWrite(EXMem.MemWrite_out), .MemRead(EXMem.MemRead_out), .data_in(EXMem.ALU_Result_out), .data_out(data_out));
 			MWBBuffer      Mwb(.MemToReg_in(EXMem.MemtoReg_out), .RegWrite_in(EXMem.RegWrite_out), .ALU_Result(EXMBuffer.ALU_Result_out), .ReadData(m1.data_out), .movOP_in(EXMem.movOp_out), .MemToReg_out(MemToReg_out), .RegWrite_out(RegWrite_out), .ALU_Result_out(ALU_Result_out), .ReadData_out(ReadData_out), .movOP_out(movOp_out), .EXM_RS(EXMem.EXM_RegRD_out),.EXM_RT(EXMem.EXM_RegRT_out), .MWB_RS(MWB_RS),.MWB_RT(MWB_RT));
@@ -139,10 +138,10 @@ MUX_FA			muxFA(.ForwardA(FwdU.ForwardA), .IDEX_op1(IDEX.RD1), .EM_op1(EXMem.ALU_
 
 			branchLogic BL(.rd1(a1.op1),.rd15(a1.remainder),.branch(IDEX.Branch_out), .PCSRC(PCSRC),.opcode(IDEX.opcode));
 			shiftLeft SL(.signExtendedR2(IDEX.signExtendedR2_out),.shiftedOut(shiftedOut));
-			BL_add BLadder(.SE(SL.signExtendedR2), .PC_in(IDEX.addr_out), .BL_result(BL_result));
+			BL_add BLadder(.SE(SL.shiftedOut), .PC_in(IDEX.addr_out), .BL_result(BL_result));
 			//BranchLogic BL_AndGate(.rd1(IDEX
 			initial
-			$monitor("\nMUXPC: PCAdderAddr: %h BranchAddr: %h PCSRC: %b, muxPCOut: %h\nPC: reset = %b, addr_in = %h, addr_out = %h \nADDER: addr_in = %h, constant = %h, addr_out = %h,\nIM: Addr_in = %h, Addr_out = %h, instruc_out = %h \nIFIDBUFFER: instruc_in = %h, addr_in = %h, ,instruc_out = %h, opcode = %b, funct= %b, addr_out = %h, offset = %b , IFID_Fop1 = %b,IFID_Fop2 = %b \nControl: control = %b, R15 = %h,ALUSrc= %b,MemToReg = %b,RegWrite = %b,MemRead = %b,MemWrite = %b, Branch = %b, ALUOP = %b \nRegFile:  Instruc_in = %h, Writedata = %h Writereg =%b RegWrite = %b reset = %b op1 = %h op2 = %h Reg15 = %h\nIDEX:IDEX_FLUSH =%b, RD1 = %h,RD2 = %h, signExtendedR2 = %b, funct_code_in =%b, IFID_RS = %b, IFID_RT =%b , R15_in = %h, ALUSrc_in = %b, MemToReg_in =%b, RegWrite_in= %b, MemRead_in = %b, MemWrite_in = %b,Branch_in = %b, ALUOP_in =%b,R15_out =%b,ALUSrc_out = %b ,MemToReg_out =%b,RegWrite_out = %b,MemRead_out =%b, MemWrite_out =%b , Branch_out =%b,ALUOP_out = %b, RD1_out = %h, RD2_out =%h, signExtendedR2_out =%b, funct_code_out =%b, IFID_RS_OUT =%h, IFID_RT_OUT = %h, opcode = %b, opcode_out = %b, addr_in = %h, addr_out =%h \nSignExtension toExtend: %b signExtend: %b\nALUControl funct: %b ALUop: %b  operation: %b\n  ALU operation: %b op1: %h op2: %h result: %h remainder: %h overflow:%b \nEXMBuffer: ALU_Result = %h, ALU_Remainder= %h, movOP_in= %b , MemtoReg_in = %b,MemWrite_in =%b, MemRead_in = %b, R15_in =%b,FLUSH_EX =%b, RegWrite =%b, IDEX_RegRD =%b, ,MemtoReg_out = %b, MemWrite_out = %b, MemRead_out =%b, R15_out =%b,RegWrite_out =%b, ALU_Result_out =%b, ALU_Remainder_out = %h, movOp_out =%b,EXM_RegRD_out = %b\nMEM: MemWrite: %b MemRead: %b data_in: %h data_out:%h \nMWBBuffer: MemToReg_in: %b RegWrite_in: %b ALU_Result: %h ReadData: %h movOP_in: %h MemToReg_out: %b RegWriteOut: %b ALU_Result_out: %b ReadData_out: %b movOP_out %h \n WBMUX: MemToReg =%b, ALUResult = %h, MReadData = %h, WriteData = %h",
+			$monitor("\nMUXPC: PCAdderAddr: %h BranchAddr: %h PCSRC: %b, muxPCOut: %h\nPC: reset = %b, addr_in = %h, addr_out = %h \nADDER: addr_in = %h, constant = %h, addr_out = %h,\nIM: Addr_in = %h, Addr_out = %h, instruc_out = %h \nIFIDBUFFER: instruc_in = %h, addr_in = %h, ,instruc_out = %h, opcode = %b, funct= %b, addr_out = %h, offset = %b , IFID_Fop1 = %b,IFID_Fop2 = %b \nControl: control = %b, R15 = %h,ALUSrc= %b,MemToReg = %b,RegWrite = %b,MemRead = %b,MemWrite = %b, Branch = %b, ALUOP = %b \nRegFile:  Instruc_in = %h, Writedata = %h Writereg =%b RegWrite = %b reset = %b op1 = %h op2 = %h Reg15 = %h\nHazard Detection: IFID_op1: %h IFID_op2: %h  IDEX_op1: %h IDEX_MemRead: %h STALL: %h  PCWrite: %b  IFID_Write: %b\nIDEX:IDEX_FLUSH =%b, RD1 = %h,RD2 = %h, signExtendedR2 = %b, funct_code_in =%b, IFID_RS = %b, IFID_RT =%b , R15_in = %h, ALUSrc_in = %b, MemToReg_in =%b, RegWrite_in= %b, MemRead_in = %b, MemWrite_in = %b,Branch_in = %b, ALUOP_in =%b,R15_out =%b,ALUSrc_out = %b ,MemToReg_out =%b,RegWrite_out = %b,MemRead_out =%b, MemWrite_out =%b , Branch_out =%b,ALUOP_out = %b, RD1_out = %h, RD2_out =%h, signExtendedR2_out =%b, funct_code_out =%b, IFID_RS_OUT =%h, IFID_RT_OUT = %h, opcode = %b, opcode_out = %b, addr_in = %h, addr_out =%h \nSignExtension toExtend: %b signExtend: %b\nALUControl funct: %b ALUop: %b  operation: %b\n  ALU operation: %b op1: %h op2: %h result: %h remainder: %h overflow:%b \nForwardingUnit EM_RD: %h MWB_RD: %h ID_OP1: %h ID_OP2: %h EM_RegWrite: %h MWB_RegWrite: %h ForwardA: %b ForwardB: %b\nBranch Info: Shifted Sign Extend: %h PCAddr: %h Branch_Addr: %h PCSRC: %b\nEXMBuffer: ALU_Result = %h, ALU_Remainder= %h, movOP_in= %b , MemtoReg_in = %b,MemWrite_in =%b, MemRead_in = %b, R15_in =%b,FLUSH_EX =%b, RegWrite =%b, IDEX_RegRD =%b, ,MemtoReg_out = %b, MemWrite_out = %b, MemRead_out =%b, R15_out =%b,RegWrite_out =%b, ALU_Result_out =%b, ALU_Remainder_out = %h, movOp_out =%b,EXM_RegRD_out = %b\nMEM: MemWrite: %b MemRead: %b data_in: %h data_out:%h \nMWBBuffer: MemToReg_in: %b RegWrite_in: %b ALU_Result: %h ReadData: %h movOP_in: %h MemToReg_out: %b RegWriteOut: %b ALU_Result_out: %b ReadData_out: %b movOP_out %h \n WBMUX: MemToReg =%b, ALUResult = %h, MReadData = %h, WriteData = %h",
 			add1.addr_out, BLadder.BL_result, HD.PCWrite, muxPCOut, // muxPC
 			reset, pc1.addr_in, pc1.addr_out,							//PC
 			add1.addr_in, add1.constant, add1.addr_out,  //adder
@@ -150,10 +149,13 @@ MUX_FA			muxFA(.ForwardA(FwdU.ForwardA), .IDEX_op1(IDEX.RD1), .EM_op1(EXMem.ALU_
 			 im1.instruc_out, im1.addr_out, instruc_out, opcode, funct, addr_out, offset, IFID_Fop1, IFID_Fop2,  //IFID Buffer
 			 IFID.opcode, R15,ALUSrc,MemToReg,RegWrite,MemRead,MemWrite,Branch, ALUOP,                          //control
 			 IFID.instruc_out, WBmux.WriteData, Writereg, c1.RegWrite, reset, op1, op2, Reg15,                        //regFile
+			IFID.IFID_Fop1, IFID.IFID_Fop2, IDEX.RD1_out, IDEX.MemRead_out, STALL, PCWrite, IFID_Write,//Hazard
 			IDEX_FLUSH,r1.op1,r1.op2,signExtend.signExtended,IFID.funct,IFID.IFID_Fop1, IFID.IFID_Fop2, c1.R15,c1.ALUSrc,c1.MemToReg,c1.RegWrite,c1.MemRead,c1.MemWrite,c1.Branch,c1.ALUOP,R15_out,ALUSrc_out, MemToReg_out, RegWrite_out, MemRead_out,MemWrite_out,Branch_out,ALUOP_out,RD1_out,RD2_out,signExtendedR2_out,funct_code_out,IFID_RS_OUT,IFID_RT_OUT,IFID.opcode,opcode, IFID.addr_out,addr_out, // IDEX Buffer
 			IFID.IFID_Fop2, signExtended, //Sign Extension
 			IDEX.funct_code_out, IDEX.ALUOP_out, operation,//ALUcontrol
 			ac1.operation, IDEX.RD1_out, IDEX.RD2_out, result, remainder, o, // ALU
+			EXMem.EXM_RegRD_out, Mwb.ReadData, IDEX.RD1, IDEX.RD2, EXMem.MemtoReg_out, Mwb.RegWrite_out, ForwardA, ForwardB,//forwarding
+			SL.shiftedOut, IDEX.addr_out, BLadder.BL_result, BL.PCSRC, //branch logic
 			IDEX.RD1_out, a1.result,a1.remainder,movOP_in,IDEX.MemToReg_out,IDEX.MemWrite_out,IDEX.MemRead_out,IDEX.R15_out,IDEX_FLUSH,IDEX.RegWrite_out,IDEX_RegRD,MemToReg_out,MemWrite_out,MemRead_out,R15_out, RegWrite_out, ALU_Result_out,ALU_Remainder_out,movOp_out,EXM_RegRD_out,         // EXMem Buffer
 			EXMem.MemWrite_out, EXMem.MemRead_out, EXMem.ALU_Result_out, EXMem.ALU_Result_out, data_out, //Mem
 			EXMem.MemtoReg_out, EXMem.RegWrite_out,EXMBuffer.ALU_Result_out,m1.data_out, ALU_Result_out,MemToReg_out, RegWrite_out,ALU_Result_out, ReadData_out, movOp_out, //Mem Wb  buffer

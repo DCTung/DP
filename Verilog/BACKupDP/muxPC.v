@@ -1,7 +1,7 @@
 module muxPC(
-  input [15:0] PCAdderAddr, BranchAddr,
+  input [8:0] PCAdderAddr, BranchAddr,
   input PCSRC,
-  output reg [15:0] muxPCOut
+  output reg [8:0] muxPCOut
   );
 
   always@(*)

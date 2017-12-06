@@ -1,7 +1,11 @@
 
 
+//muxPC				PCMUX(.PCAdderAddr(add.addr_out), .BranchAddr(BLadder.BL_result), .PCSRC(HD.PCWrite),.muxPCOut(muxPCOut));
 
 
+
+
+//
 initial $monitor("\nSignExtension toExtend: %h signExtend: %h\nALUControl funct: %h ALUop: %h  operation: %h",
 IFID.instruc_out, signExtended, IDEX.funct_code_out, IDEX.ALUOP_out, operation);
 //SignExtension signExtend(.toExtend(IFID.instruc_out), .signExtended(signExtended));
@@ -33,7 +37,7 @@ IFID.IFID_Fop1, IFID>IFID_Fop2, IDEX.RD1_out, IDEX.MemRead_out, STALL, PCWrite, 
 BranchLogic
 "rd1: %h, rd15: %h, branch: %h, PCSRC: %b, opcode: %h"
 a1.op1, a1.remainder, IDEX.Branch_out, PCSRC, IDEX.opcode_out
-
+//muxPC				PCMUX(.PCAdderAddr(add.addr_out), .BranchAddr(BLadder.BL_result), .PCSRC(HD.PCWrite),.muxPCOut(muxPCOut));
 shiftLeft
 "signExtendedR2: %h shiftedOut: %h"
 IDEX.signExtendedR2_out, shiftedOut
