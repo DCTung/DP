@@ -30,7 +30,7 @@ module cpu(input clk, reset);
 //PC signals
 reg [7:0] addr_in = 8'h00;
 wire [7:0] addr_out;
-
+wire [15:0] muxPCOut;
 //adder sigs
 reg [7:0] constant = 8'h02;
 
@@ -101,7 +101,7 @@ wire [15:0] BL_result;
 
 //muxStuff
 
-			muxPC				PCMUX(.PCAdderAddr(add1.addr_out), .BranchAddr(BLadder.BL_result), .PCSRC(HD.PCWrite),.muxPCOut(muxPCOut));
+			muxPC				PCMUX(.PCAdderAddr(add1.addr_out), .BranchAddr(BLadder.BL_result), .PCSRC(HD.PCWrite), .muxPCOut(muxPCOut));
 			adder         add1(.clk(clk), .reset(reset), .addr_in(pc1.addr_out), .constant(constant), .addr_out(addr_out));
 			PC             pc1(.addr_in(add1.addr_out), .addr_out(addr_out));
 			IM             im1(.reset(reset), .addr_in(pc1.addr_out), .addr_out(addr_out), .instruc_out(instruc_out));
@@ -143,7 +143,7 @@ MUX_FA			muxFA(.ForwardA(FwdU.ForwardA), .IDEX_op1(IDEX.RD1), .EM_op1(EXMem.ALU_
 			//BranchLogic BL_AndGate(.rd1(IDEX
 			initial
 			$monitor("\nMUXPC: PCAdderAddr: %h BranchAddr: %h PCSRC: %b, muxPCOut: %h\nPC: reset = %b, addr_in = %h, addr_out = %h \nADDER: addr_in = %h, constant = %h, addr_out = %h,\nIM: Addr_in = %h, Addr_out = %h, instruc_out = %h \nIFIDBUFFER: instruc_in = %h, addr_in = %h, ,instruc_out = %h, opcode = %b, funct= %b, addr_out = %h, offset = %b , IFID_Fop1 = %b,IFID_Fop2 = %b \nControl: control = %b, R15 = %h,ALUSrc= %b,MemToReg = %b,RegWrite = %b,MemRead = %b,MemWrite = %b, Branch = %b, ALUOP = %b \nRegFile:  Instruc_in = %h, Writedata = %h Writereg =%b RegWrite = %b reset = %b op1 = %h op2 = %h Reg15 = %h\nIDEX:IDEX_FLUSH =%b, RD1 = %h,RD2 = %h, signExtendedR2 = %b, funct_code_in =%b, IFID_RS = %b, IFID_RT =%b , R15_in = %h, ALUSrc_in = %b, MemToReg_in =%b, RegWrite_in= %b, MemRead_in = %b, MemWrite_in = %b,Branch_in = %b, ALUOP_in =%b,R15_out =%b,ALUSrc_out = %b ,MemToReg_out =%b,RegWrite_out = %b,MemRead_out =%b, MemWrite_out =%b , Branch_out =%b,ALUOP_out = %b, RD1_out = %h, RD2_out =%h, signExtendedR2_out =%b, funct_code_out =%b, IFID_RS_OUT =%h, IFID_RT_OUT = %h, opcode = %b, opcode_out = %b, addr_in = %h, addr_out =%h \nSignExtension toExtend: %b signExtend: %b\nALUControl funct: %b ALUop: %b  operation: %b\n  ALU operation: %b op1: %h op2: %h result: %h remainder: %h overflow:%b \nEXMBuffer: ALU_Result = %h, ALU_Remainder= %h, movOP_in= %b , MemtoReg_in = %b,MemWrite_in =%b, MemRead_in = %b, R15_in =%b,FLUSH_EX =%b, RegWrite =%b, IDEX_RegRD =%b, ,MemtoReg_out = %b, MemWrite_out = %b, MemRead_out =%b, R15_out =%b,RegWrite_out =%b, ALU_Result_out =%b, ALU_Remainder_out = %h, movOp_out =%b,EXM_RegRD_out = %b\nMEM: MemWrite: %b MemRead: %b data_in: %h data_out:%h \nMWBBuffer: MemToReg_in: %b RegWrite_in: %b ALU_Result: %h ReadData: %h movOP_in: %h MemToReg_out: %b RegWriteOut: %b ALU_Result_out: %b ReadData_out: %b movOP_out %h \n WBMUX: MemToReg =%b, ALUResult = %h, MReadData = %h, WriteData = %h",
-			add1.addr_out, BLadder.BL_result, PCWrite, muxPCOut, // muxPC
+			add1.addr_out, BLadder.BL_result, HD.PCWrite, muxPCOut, // muxPC
 			reset, pc1.addr_in, pc1.addr_out,							//PC
 			add1.addr_in, add1.constant, add1.addr_out,  //adder
 			pc1.addr_out, addr_out, instruc_out,         // IM
