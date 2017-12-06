@@ -1,6 +1,5 @@
 module mem(
 	   input clk, reset, MemWrite, MemRead,
-	   input [7:0] Memaddr_in,
 	   input [15:0] data_in,
 	   output reg [15:0] data_out);
 reg [15:0] m [255:0];
@@ -17,17 +16,8 @@ always@(posedge clk or negedge reset)
 		for(i = 8'h10; i < 255; i = i + 1)
 			m[i] <= 16'h0000;
 	end
-	else if(MemRead && MemWrite)
-	begin
-		data_out <= m[Memaddr_in];
-		m[Memaddr_in] <= data_in; 
-	end	
-	else if(MemRead && !MemWrite)
-		data_out <= m[Memaddr_in];	
-	else if(!MemRead && MemWrite)
-		m[Memaddr_in] <= data_in; 
+	else if(MemRead && !MemWrite)// load
+		data_out <= m[data_in[7:0]];	
+	else if(!MemRead && MemWrite) // store
+		m[data_in[7:0]] <= data_in; 
 endmodule
-		
-		
-
-		
