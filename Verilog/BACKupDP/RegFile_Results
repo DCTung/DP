@@ -1,0 +1,16 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Nov 29 10:23 2017
+                   0 clk = 1, reset = 1, RegWrite = x, instruc_in = xxxx, Writedata = xxxx, op1 = xxxx, op2 = xxxx, funct = xxxx
+                  10 clk = 0, reset = 1, RegWrite = x, instruc_in = xxxx, Writedata = xxxx, op1 = xxxx, op2 = xxxx, funct = xxxx
+                  20 clk = 1, reset = 0, RegWrite = 1, instruc_in = f120, Writedata = ffff, op1 = 0000, op2 = 0000, funct = 0000
+                  30 clk = 0, reset = 0, RegWrite = 1, instruc_in = f120, Writedata = ffff, op1 = 0000, op2 = 0000, funct = 0000
+                  40 clk = 1, reset = 1, RegWrite = 1, instruc_in = f120, Writedata = ffff, op1 = ffff, op2 = 0050, funct = 0000
+                  50 clk = 0, reset = 1, RegWrite = 1, instruc_in = f120, Writedata = ffff, op1 = ffff, op2 = 0050, funct = 0000
+$finish called from file "RegFile_fixture.v", line 26.
+$finish at simulation time                   60
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 60
+CPU Time:      0.340 seconds;       Data structure size:   0.0Mb
+Wed Nov 29 10:23:53 2017
+

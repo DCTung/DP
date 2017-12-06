@@ -1,0 +1,94 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Dec  2 15:28 2017
+register[          1] = 0f00
+register[          2] = 0050
+register[          3] = ff0f
+register[          4] = f0ff
+register[          5] = 0040
+register[          6] = 6666
+register[          7] = 00ff
+register[          8] = ff88
+register[          9] = 0000
+register[         10] = 0000
+register[         11] = 0000
+register[         12] = cccc
+register[         13] = 0002
+register[         14] = 0000
+register[         15] = 0000
+register[         16] = 0000
+register[          1] = 0f00
+register[          2] = 0050
+register[          3] = ff0f
+register[          4] = f0ff
+register[          5] = 0040
+register[          6] = 6666
+register[          7] = 00ff
+register[          8] = ff88
+register[          9] = 0000
+register[         10] = 0000
+register[         11] = 0000
+register[         12] = cccc
+register[         13] = 0002
+register[         14] = 0000
+register[         15] = 0000
+register[         16] = 0000
+ 
+    PC: reset = 1, addr_in = 00, addr_out = 00 
+   ADDER: addr_in = 00, constant = 02, addr_out = 00, 
+   IM: addr_in = 00, addr_out = 00, instruct_out = f120, 
+   IFID: instruc_in = f120, addr_in = 00, instruc_out = f120, opcode = 1111, funct = 0000, addr_out = 00, offset = 000100100000
+   CONTROL: opcode = 1111, R15 = 0, ALUSrc = 0, MemtoReg = 0, RegWrite = 0, MemRead = 0, MemWrite = 0, Branch = 0, ALUOP = 00
+   REGFILE: instruc_in = f120, WriteData = xxxx, WriteReg =  x, RegWrite = 0, op1 = 0f00, op2 = 0050, Reg15 = 0000
+register[          1] = 0f00
+register[          2] = 0050
+register[          3] = ff0f
+register[          4] = f0ff
+register[          5] = 0040
+register[          6] = 6666
+register[          7] = 00ff
+register[          8] = ff88
+register[          9] = 0000
+register[         10] = 0000
+register[         11] = 0000
+register[         12] = cccc
+register[         13] = 0002
+register[         14] = 0000
+register[         15] = 0000
+register[         16] = 0000
+ 
+    PC: reset = 0, addr_in = 00, addr_out = 02 
+   ADDER: addr_in = 02, constant = 02, addr_out = 02, 
+   IM: addr_in = 02, addr_out = 02, instruct_out = f121, 
+   IFID: instruc_in = f121, addr_in = 02, instruc_out = f121, opcode = 1111, funct = 0001, addr_out = 02, offset = 000100100001
+   CONTROL: opcode = 1111, R15 = 1, ALUSrc = 0, MemtoReg = 1, RegWrite = 1, MemRead = 0, MemWrite = 0, Branch = 0, ALUOP = 11
+   REGFILE: instruc_in = f121, WriteData = xxxx, WriteReg =  x, RegWrite = 1, op1 = 0f00, op2 = 0050, Reg15 = 0000
+register[          1] = 0f00
+register[          2] = 0050
+register[          3] = ff0f
+register[          4] = f0ff
+register[          5] = 0040
+register[          6] = 6666
+register[          7] = 00ff
+register[          8] = ff88
+register[          9] = 0000
+register[         10] = 0000
+register[         11] = 0000
+register[         12] = cccc
+register[         13] = 0002
+register[         14] = 0000
+register[         15] = 0000
+register[         16] = 0000
+ 
+    PC: reset = 0, addr_in = 00, addr_out = 04 
+   ADDER: addr_in = 04, constant = 02, addr_out = 04, 
+   IM: addr_in = 04, addr_out = 04, instruct_out = 93ff, 
+   IFID: instruc_in = 93ff, addr_in = 04, instruc_out = 93ff, opcode = 1001, funct = 1111, addr_out = 04, offset = 001111111111
+   CONTROL: opcode = 1001, R15 = 1, ALUSrc = 0, MemtoReg = 1, RegWrite = 1, MemRead = 0, MemWrite = 0, Branch = 0, ALUOP = 11
+   REGFILE: instruc_in = 93ff, WriteData = xxxx, WriteReg =  x, RegWrite = 1, op1 = ff0f, op2 = 0000, Reg15 = 0000
+$finish called from file "cpu_fixture.v", line 17.
+$finish at simulation time                   60
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 60
+CPU Time:      0.330 seconds;       Data structure size:   0.0Mb
+Sat Dec  2 15:28:15 2017
