@@ -83,6 +83,7 @@ wire [3:0] movOp_out, EXM_RegRD_out;
 
 //mem
 wire [15:0] data_out;
+wire [15:0] data_in;
 
 //Mem WB Buffer
 
